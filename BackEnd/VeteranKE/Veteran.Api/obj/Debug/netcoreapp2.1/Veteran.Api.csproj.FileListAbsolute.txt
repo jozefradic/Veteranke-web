@@ -1,0 +1,14 @@
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\bin\Debug\netcoreapp2.1\Veteran.Api.deps.json
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\bin\Debug\netcoreapp2.1\Veteran.Api.runtimeconfig.json
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\bin\Debug\netcoreapp2.1\Veteran.Api.runtimeconfig.dev.json
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\bin\Debug\netcoreapp2.1\Veteran.Api.dll
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\bin\Debug\netcoreapp2.1\Veteran.Api.pdb
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.csprojAssemblyReference.cache
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.csproj.CoreCompileInputs.cache
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.RazorAssemblyInfo.cache
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.RazorAssemblyInfo.cs
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.AssemblyInfoInputs.cache
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.AssemblyInfo.cs
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.RazorTargetAssemblyInfo.cache
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.dll
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Api\obj\Debug\netcoreapp2.1\Veteran.Api.pdb
