@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Veteran.Repository.Data;
+using Veteran.Repository.Interfaces;
+using Veteran.Repository.Repositories;
 
 namespace Veteran.Api
 {
@@ -31,6 +33,8 @@ namespace Veteran.Api
             services.AddDbContext<DataContext>(x => 
             x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly("Veteran.Api")));
+            // service is created once per request within the scope
+            services.AddScoped<IAuth, Auth>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

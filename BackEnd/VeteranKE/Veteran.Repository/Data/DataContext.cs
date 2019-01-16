@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Veteran.Repository.Models;
+using Veteran.Repository.Models.UserModels;
 
 namespace Veteran.Repository.Data
 {
@@ -12,5 +13,6 @@ namespace Veteran.Repository.Data
             : base(options){}
 
         public DbSet<Values> Values { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
