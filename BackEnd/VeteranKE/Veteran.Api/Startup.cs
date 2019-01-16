@@ -6,10 +6,12 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Veteran.Repository.Data;
 
 namespace Veteran.Api
 {
@@ -26,6 +28,9 @@ namespace Veteran.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddDbContext<DataContext>(x => 
+            x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
+            b => b.MigrationsAssembly("Veteran.Api")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
