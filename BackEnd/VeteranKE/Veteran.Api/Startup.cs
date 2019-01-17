@@ -34,6 +34,7 @@ namespace Veteran.Api
             x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly("Veteran.Api")));
             // service is created once per request within the scope
+            // if we implement iauth, we implement auth
             services.AddScoped<IAuth, Auth>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

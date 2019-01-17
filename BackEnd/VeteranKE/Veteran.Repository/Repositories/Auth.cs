@@ -18,6 +18,7 @@ namespace Veteran.Repository.Repositories
         {
             _context = context;
         }
+
         public async Task<User> Login(string username, string password)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x =>x.Name == username);
@@ -28,7 +29,6 @@ namespace Veteran.Repository.Repositories
                 return null;
 
             return user;
-
         }
 
         private bool VerifyPasswordHashes(string password, byte[] passwordHash, byte[] passwordSalt)
@@ -36,7 +36,7 @@ namespace Veteran.Repository.Repositories
             using(var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
             {
                 var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                foreach(int i in computedHash)
+                for(int i = 0; i <computedHash.Length; i++)
                 {
                     if (computedHash[i] != passwordHash[i]) return false;
                 }
