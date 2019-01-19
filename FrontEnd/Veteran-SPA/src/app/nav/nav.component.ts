@@ -7,6 +7,7 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  logBtn = false;
   // to store username and pass
   loginCredential: any = {};
 // inject module auth service
@@ -19,7 +20,7 @@ export class NavComponent implements OnInit {
     this.authService.login(this.loginCredential).subscribe(next => {
       console.log('Logged in succesfully');
     }, error => {
-      console.log('Failed to log in');
+      console.log(error);
     });
   }
 
@@ -32,6 +33,14 @@ export class NavComponent implements OnInit {
   loggOut() {
     localStorage.removeItem('token');
     console.log('Logged out');
+  }
+
+  cancelLogin() {
+    this.logBtn = false;
+  }
+
+  logInForm() {
+    this.logBtn = true;
   }
 
 }

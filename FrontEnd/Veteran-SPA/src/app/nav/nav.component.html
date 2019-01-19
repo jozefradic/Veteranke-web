@@ -1,12 +1,15 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Veteran KE</a>
 
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Home </a>
+  <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['/home']">Home </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" >
+      <a class="nav-link" [routerLink]="['/register']" >Register</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" (click)="loggOut()">Logout</a>
@@ -25,12 +28,21 @@
     </div>
   </div>
 
-  <form *ngIf="!loggedIn()" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+  <div *ngIf="!logBtn && !loggedIn()">
+    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit" (click)="logInForm()">Log</button>
+    <a [routerLink]="['/register']"> 
+      <button class="btn btn-success my-2 my-sm-0" type="submit" >Register</button>
+    </a>    
+  </div>
+
+  <form *ngIf="!loggedIn() && logBtn" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
     <input class="form-control mr-sm-2" type="text" placeholder="Username" 
     required [(ngModel)]="loginCredential.username" name="username">
     <input class="form-control mr-sm-2" type="password" placeholder="Password" 
     required [(ngModel)]="loginCredential.password" name="password">
     <button [disabled]="!loginForm.valid" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+    <button class="btn btn-default" type="submit" (click)="cancelLogin()">Cancel</button>
+
   </form>
 
 </nav>
