@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { AlertifyService } from '../_services/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -11,16 +13,19 @@ export class NavComponent implements OnInit {
   // to store username and pass
   loginCredential: any = {};
 // inject module auth service
-  constructor(private authService: AuthService ) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService,
+    private router: Router ) { }
 
   ngOnInit() {
   }
 // send loginCredential(premenna z navbar) and send it to auth.service (tam však premennu volame model)
   login() {
     this.authService.login(this.loginCredential).subscribe(next => {
-      console.log('Logged in succesfully');
+      this.alertify.success('Logged in succesfully');
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
+    }, () => {
+      this.router.navigate(['/home']);
     });
   }
 
@@ -32,7 +37,8 @@ export class NavComponent implements OnInit {
 
   loggOut() {
     localStorage.removeItem('token');
-    console.log('Logged out');
+    this.alertify.message('Logged out');
+    this.router.navigate(['/home']);
   }
 
   cancelLogin() {

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Veteran KE</a>
 
-  <ul *ngIf="loggedIn()" class="navbar-nav mr-auto">
+  <ul  class="navbar-nav mr-auto">
     <li class="nav-item" routerLinkActive="active">
       <a class="nav-link" [routerLink]="['/home']">Home </a>
     </li>
@@ -11,14 +11,21 @@
     <li class="nav-item" routerLinkActive="active" >
       <a class="nav-link" [routerLink]="['/register']" >Register</a>
     </li>
-    <li class="nav-item">
+    <li *ngIf="loggedIn()" class="nav-item">
       <a class="nav-link" (click)="loggOut()">Logout</a>
     </li>
   </ul>
 
+  <div *ngIf="!logBtn && !loggedIn()">
+    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit" (click)="logInForm()">Log</button>
+    <a [routerLink]="['/register']"> 
+      <button class="btn btn-success my-2 my-sm-0" type="submit" >Register</button>
+    </a>    
+  </div>
+
   <div *ngIf="loggedIn()" class="dropdown" dropdown>
     <a class="dropdown-toggle text-light" dropdownToggle>
-      Welcome User
+      Welcome {{authService.decodedToken?.unique_name | titlecase}}
     </a>
   
     <div class="dropdown-menu" *bsDropdownMenu>
@@ -26,13 +33,6 @@
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" (click)="loggOut()"><i class="fa fa-sign-out"></i>LogOut</a>
     </div>
-  </div>
-
-  <div *ngIf="!logBtn && !loggedIn()">
-    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit" (click)="logInForm()">Log</button>
-    <a [routerLink]="['/register']"> 
-      <button class="btn btn-success my-2 my-sm-0" type="submit" >Register</button>
-    </a>    
   </div>
 
   <form *ngIf="!loggedIn() && logBtn" #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
@@ -44,5 +44,7 @@
     <button class="btn btn-default" type="submit" (click)="cancelLogin()">Cancel</button>
 
   </form>
+
+  
 
 </nav>

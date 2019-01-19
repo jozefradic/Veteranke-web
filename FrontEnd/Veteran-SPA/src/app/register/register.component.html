@@ -1,4 +1,4 @@
-<form #registerForm="ngForm" (click)="register()">
+<form #registerForm="ngForm" (ngSubmit)="register()">
   <h2 class="text-center text-primary">Sing up</h2>
   <hr>
 
@@ -13,6 +13,6 @@
   </div>
 
   <div class="form-group">
-    <button class="btn btn-success" type="submit">Register</button>
+    <button [disabled]="!registerForm.valid" class="btn btn-success" type="submit">Register</button>
   </div>
 </form>
