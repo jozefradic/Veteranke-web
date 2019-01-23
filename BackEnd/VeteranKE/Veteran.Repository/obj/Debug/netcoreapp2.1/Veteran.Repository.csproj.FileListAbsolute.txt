@@ -9,4 +9,6 @@ C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repos
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csproj.CopyComplete
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.dll
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.pdb
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Newtonsoft.Json.dll
+C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Newtonsoft.Json.xml
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csprojAssemblyReference.cache
