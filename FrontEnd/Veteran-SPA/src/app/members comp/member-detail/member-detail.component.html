@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4 kartis">
+      <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.name}}">
+      <div class="card-body">
+        <div>
+          <strong>Created:</strong>
+          <p>{{user.created}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset>
+          <tab heading="City {{user.name}}" index="0">
+            <p>{{user.city}}</p>
+          </tab>
+          <tab heading="Country {{user.name}}" index="0">
+              <p>{{user.country}}</p>
+            </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
