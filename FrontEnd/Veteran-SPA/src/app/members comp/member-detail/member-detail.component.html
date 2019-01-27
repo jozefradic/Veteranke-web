@@ -15,10 +15,14 @@
         <tabset>
           <tab heading="City {{user.name}}" index="0">
             <p>{{user.city}}</p>
+            <p>{{user.age}}</p>
           </tab>
           <tab heading="Country {{user.name}}" index="0">
               <p>{{user.country}}</p>
-            </tab>
+          </tab>
+          <tab heading="Photos of {{user.name}}" index="0">
+            <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+          </tab>
         </tabset>
       </div>
     </div>

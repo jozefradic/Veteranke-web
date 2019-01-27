@@ -1,0 +1,49 @@
+<div class="container mt-4">
+
+  <div class="row">
+    <div class="col-sm-4">
+        <h1>Your Profile</h1>
+
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <p><strong>Information:</strong> Urobili ste zmeny. Všetky neuložené zmeny budú stratené
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+
+    <div class="col-sm-4 kartis">
+      <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.name}}">
+      <div class="card-body">
+        <div>
+          <strong>Created:</strong>
+          <p>{{user.created}}</p>
+        </div>
+        <div class="card-footer">
+          <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset>
+          <tab heading="Edit City {{user.name}}" index="0">
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
+              <h4>City</h4>
+              <textarea name="city" rows="6" class="form-control"
+              [(ngModel)]="user.city"></textarea>
+              <h4>Country</h4>
+              <textarea name="country" rows="6" class="form-control"
+              [(ngModel)]="user.country"></textarea>
+              
+            </form>
+          </tab>
+          
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
