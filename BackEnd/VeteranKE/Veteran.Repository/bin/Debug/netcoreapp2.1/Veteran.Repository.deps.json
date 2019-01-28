@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "15fcb7736dafab209df017e3978fbfa50143bd6d"
+    "signature": "780999e0bd93f63aa970800e97e71d68d2e99967"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,8 +9,9 @@
       "Veteran.Repository/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "Microsoft.EntityFrameworkCore": "2.1.1.0",
-          "Newtonsoft.Json": "11.0.0.0"
+          "CloudinaryDotNet": "1.6.0",
+          "Microsoft.AspNetCore.Http.Features": "2.1.1.0",
+          "Microsoft.EntityFrameworkCore": "2.1.1.0"
         },
         "runtime": {
           "Veteran.Repository.dll": {}
@@ -40,12 +41,31 @@
           }
         }
       },
+      "CloudinaryDotNet/1.6.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "11.0.1"
+        },
+        "runtime": {
+          "lib/netstandard1.3/CloudinaryDotNet.dll": {
+            "assemblyVersion": "1.6.0.0",
+            "fileVersion": "1.6.0.0"
+          }
+        }
+      },
       "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Extensions.DependencyInjection.Abstractions/2.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.0.0.17205"
+          }
+        }
+      },
+      "Newtonsoft.Json/11.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.1.21818"
           }
         }
       },
@@ -95,19 +115,19 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "Microsoft.EntityFrameworkCore/2.1.1.0": {
+      "Microsoft.AspNetCore.Http.Features/2.1.1.0": {
         "runtime": {
-          "Microsoft.EntityFrameworkCore.dll": {
+          "Microsoft.AspNetCore.Http.Features.dll": {
             "assemblyVersion": "2.1.1.0",
             "fileVersion": "2.1.1.18157"
           }
         }
       },
-      "Newtonsoft.Json/11.0.0.0": {
+      "Microsoft.EntityFrameworkCore/2.1.1.0": {
         "runtime": {
-          "Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
+          "Microsoft.EntityFrameworkCore.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.18157"
           }
         }
       }
@@ -133,6 +153,13 @@
       "path": "automapper.extensions.microsoft.dependencyinjection/6.0.0",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512"
     },
+    "CloudinaryDotNet/1.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HKROJitzDyQ6X8sGP4KoThLU0UKHaPcR3Rr9ahMyF4WgwtIMC/UAivn7328tJGR7MgXZ+DOXVj+ecm2thHC1xw==",
+      "path": "cloudinarydotnet/1.6.0",
+      "hashPath": "cloudinarydotnet.1.6.0.nupkg.sha512"
+    },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
       "serviceable": true,
@@ -146,6 +173,13 @@
       "sha512": "sha512-VN6zV4xkMKIxIP48kQzXieZPWXUeGL3M1nQvgXCm44EAvi2eC0gYj/ldrfPde4JF3TOypAENZvuJX1qkTFAgew==",
       "path": "microsoft.extensions.dependencyinjection.abstractions/2.0.0",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512"
+    },
+    "Newtonsoft.Json/11.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wrf5LBX1omJ/8HiYKby22uBV7MPCfwxXWY39w28VZJjYdN1Cb3eiTkkWk5gAkkdW+N/A0hgSmqtiPoAwsb07qg==",
+      "path": "newtonsoft.json/11.0.1",
+      "hashPath": "newtonsoft.json.11.0.1.nupkg.sha512"
     },
     "System.IO/4.3.0": {
       "type": "package",
@@ -203,12 +237,12 @@
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore/2.1.1.0": {
+    "Microsoft.AspNetCore.Http.Features/2.1.1.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Newtonsoft.Json/11.0.0.0": {
+    "Microsoft.EntityFrameworkCore/2.1.1.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

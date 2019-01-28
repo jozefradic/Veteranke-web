@@ -15,5 +15,9 @@ namespace Veteran.Repository.Data
         public DbSet<Values> Values { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
+
+        public DbSet<Advertisement> Advertisements { get; set; }
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Article> Articles { get; set; }
     }
 }

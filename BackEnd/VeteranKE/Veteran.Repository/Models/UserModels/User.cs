@@ -17,5 +17,11 @@ namespace Veteran.Repository.Models.UserModels
         public string Country { get; set; }
 
         public ICollection<Photo> Photos { get; set; }
+
+        public ICollection<Advertisement> Advertisements { get; set; }
+        public ICollection<Article> Articles { get; set; }
+        //public ICollection<Album> Albums { get; set; }
+
+
     }
 }

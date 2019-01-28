@@ -39,6 +39,8 @@ namespace Veteran.Api
         {
             services.AddCors();
             services.AddAutoMapper();
+            //cloudinary services
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddDbContext<DataContext>(x => 
             x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly("Veteran.Api")));
