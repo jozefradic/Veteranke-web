@@ -20,7 +20,6 @@ namespace Veteran.Repository.Models.UserModels
 
         public ICollection<Advertisement> Advertisements { get; set; }
         public ICollection<Article> Articles { get; set; }
-        //public ICollection<Album> Albums { get; set; }
 
 
     }

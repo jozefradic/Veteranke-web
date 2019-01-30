@@ -12,16 +12,16 @@ namespace Veteran.Repository.Models.UserModels
         public string PublicId { get; set; }
 
         public User User { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         public Album Album { get; set; }
-        public int AlbumId { get; set; }
+        public int? AlbumId { get; set; }
 
         public Advertisement Advertisement { get; set; }
-        public int AdvertisementId { get; set; }
+        public int? AdvertisementId { get; set; }
 
         public Article Article { get; set; }
-        public int ArticleId { get; set; }
+        public int? ArticleId { get; set; }
 
     }
 }

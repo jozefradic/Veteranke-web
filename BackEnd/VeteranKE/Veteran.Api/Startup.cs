@@ -101,7 +101,7 @@ namespace Veteran.Api
             //app.UseHttpsRedirection();
 
             // if we want seed users
-            // seeder.SeedUsers();
+            //seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();

@@ -37,8 +37,11 @@ namespace Veteran.Repository.Repositories
         public async Task<User> GetUser(int id)
         {
             var user = await _context.Users.Include(p => p.Photos)
+                .Include(adv => (adv.Advertisements))
+                .ThenInclude(p => p.Photos)
                 .FirstOrDefaultAsync(u => u.Id == id);
-
+                
+              
             return user;
         }
 

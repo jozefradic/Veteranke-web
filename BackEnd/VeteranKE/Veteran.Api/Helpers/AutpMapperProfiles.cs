@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Veteran.Repository.DTOs;
+using Veteran.Repository.Models;
 using Veteran.Repository.Models.UserModels;
 
 namespace Veteran.Api.Helpers
@@ -34,6 +35,8 @@ namespace Veteran.Api.Helpers
             CreateMap<UserForUpdateDto, User>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotoForCreationDto, Photo>();
+
+            CreateMap<Advertisement, AdvertisementForDetailDto>();
         }
     }
 }

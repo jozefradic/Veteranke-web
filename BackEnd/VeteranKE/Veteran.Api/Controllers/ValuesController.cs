@@ -25,8 +25,9 @@ namespace Veteran.Api.Controllers
         public async Task<IActionResult> GetValues()
         {
             var values = await _context.Values.ToListAsync();
+            var uri = (Url.RouteUrl(RouteData.Values)).Replace("/api/",string.Empty);
 
-            return Ok(values);
+            return Ok(uri);
         }
 
         // GET api/values/5

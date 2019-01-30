@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Veteran.Repository.Models;
 using Veteran.Repository.Models.UserModels;
 
 namespace Veteran.Repository.DTOs
@@ -18,5 +19,6 @@ namespace Veteran.Repository.DTOs
 
         public string PhotoUrl { get; set; }
         public ICollection<PhotosForDetailedDto> Photos { get; set; }
+        public ICollection<AdvertisementForDetailDto> Advertisements { get; set; }
     }
 }

@@ -9,8 +9,8 @@ using Veteran.Repository.Data;
 namespace Veteran.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190128185634_AddNewRes")]
-    partial class AddNewRes
+    [Migration("20190130192225_AddRelationsBetweenEntities")]
+    partial class AddRelationsBetweenEntities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,7 +27,7 @@ namespace Veteran.Api.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
@@ -59,7 +59,7 @@ namespace Veteran.Api.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
@@ -73,11 +73,11 @@ namespace Veteran.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AdvertisementId");
+                    b.Property<int?>("AdvertisementId");
 
-                    b.Property<int>("AlbumId");
+                    b.Property<int?>("AlbumId");
 
-                    b.Property<int>("ArticleId");
+                    b.Property<int?>("ArticleId");
 
                     b.Property<DateTime>("DateAdded");
 
@@ -87,15 +87,13 @@ namespace Veteran.Api.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AdvertisementId");
 
                     b.HasIndex("AlbumId");
-
-                    b.HasIndex("ArticleId");
 
                     b.HasIndex("UserId");
 
@@ -144,16 +142,14 @@ namespace Veteran.Api.Migrations
                 {
                     b.HasOne("Veteran.Repository.Models.UserModels.User", "User")
                         .WithMany("Advertisements")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Veteran.Repository.Models.Article", b =>
                 {
                     b.HasOne("Veteran.Repository.Models.UserModels.User", "User")
                         .WithMany("Articles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Veteran.Repository.Models.UserModels.Photo", b =>
@@ -170,7 +166,7 @@ namespace Veteran.Api.Migrations
 
                     b.HasOne("Veteran.Repository.Models.Article", "Article")
                         .WithMany("Photos")
-                        .HasForeignKey("ArticleId")
+                        .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Veteran.Repository.Models.UserModels.User", "User")

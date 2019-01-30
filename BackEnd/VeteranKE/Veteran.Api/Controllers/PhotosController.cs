@@ -18,7 +18,7 @@ using Veteran.Repository.Models.UserModels;
 namespace Veteran.Api.Controllers
 {
     [Authorize]
-    [Route("api/users/{userId}/photos")]
+    [Route("api/{route}/{userId}/photos")]
     [ApiController]
     public class PhotosController : ControllerBase
     {
@@ -88,6 +88,7 @@ namespace Veteran.Api.Controllers
             if(await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
+
                 return CreatedAtRoute("GetPhoto", new { id = photo.Id }, photoToReturn);
             }
 
