@@ -13,11 +13,15 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
+
 import { MembersComponent } from './members comp/members/members.component';
 import { MemberCardComponent } from './members comp/member-card/member-card.component';
 import { MemberDetailComponent } from './members comp/member-detail/member-detail.component';
 import { MemberEditComponent } from './members comp/member-edit/member-edit.component';
 
+import { AdvertisementsComponent } from './advertisements comp/advertisements/advertisements.component';
+import { AdvertisementCardComponent } from './advertisements comp/advertisement-card/advertisement-card.component';
+import { AdvertisementDetailComponent } from './advertisements comp/advertisement-detail/advertisement-detail.component';
 
 import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
@@ -26,10 +30,13 @@ import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { UserService } from './_services/user.service';
+import { AdvertisementService } from './_services/advertisement.service';
 
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberResolver } from './_resolvers/member.resolver';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.resolver';
+import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -45,7 +52,10 @@ export function tokenGetter() {
       MembersComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      AdvertisementsComponent,
+      AdvertisementCardComponent,
+      AdvertisementDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -72,7 +82,10 @@ export function tokenGetter() {
       UserService,
       MemberDetailResolver,
       MemberResolver,
-      MemberEditResolver
+      MemberEditResolver,
+      AdvertisementService,
+      AdvertisementDetailResolver,
+      AdvertisementResolver
    ],
    bootstrap: [
       AppComponent

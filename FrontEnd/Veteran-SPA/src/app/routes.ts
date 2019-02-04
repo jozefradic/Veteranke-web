@@ -9,6 +9,10 @@ import { MemberResolver } from './_resolvers/member.resolver';
 import { MemberEditComponent } from './members comp/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { AdvertisementsComponent } from './advertisements comp/advertisements/advertisements.component';
+import { AdvertisementDetailComponent } from './advertisements comp/advertisement-detail/advertisement-detail.component';
+import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.resolver';
+import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
@@ -19,15 +23,20 @@ export const appRoute: Routes = [
         canActivate: [AuthGuard],
         children: [
             {path: 'register', component: RegisterComponent},
-            { path: 'members', component: MembersComponent, resolve: {users: MemberResolver}},
+            {path: 'members', component: MembersComponent, resolve: {users: MemberResolver}},
             {path: 'members/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolver}},
             {path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]}
 
+
             // {path: 'members', component: MembersComponent}
         ]
     },
+    {path: 'advertisements', component: AdvertisementsComponent,
+        resolve: {advertisement: AdvertisementResolver }},
+    { path: 'advertisements/:id', component: AdvertisementDetailComponent,
+        resolve: {advertisement: AdvertisementDetailResolver}},
     // wild card, if path is ok, but doesnt match anything above, redirect to HOME
     // ordering is important
     {path: '**', redirectTo: '', pathMatch: 'full'},

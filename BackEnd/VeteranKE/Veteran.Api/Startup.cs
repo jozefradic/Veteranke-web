@@ -54,6 +54,8 @@ namespace Veteran.Api
             // if we implement iauth, we implement auth
             services.AddScoped<IAuth, Auth>();
             services.AddScoped<IVeteranCrud, VeteranRepo>();
+            services.AddScoped<IAdvertisement, AdvertisementRepo>();
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

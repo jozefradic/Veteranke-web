@@ -1,5 +1,11 @@
+
 <!-- structural directive- changes DOM in some way -->
-<p *ngFor="let item of values">
+<div *ngFor="let item of values">
+    <div *ngIf="item.userId != user">
+        {{item.id}}, {{item.name}}
+       </div> 
   <!-- using interpolation to display values -->
-  {{item.id}}, {{item.name}}
-</p>
+ <div *ngIf="item.userId == user">
+  {{item.id}}, {{item.name}} lalal
+ </div> 
+</div>

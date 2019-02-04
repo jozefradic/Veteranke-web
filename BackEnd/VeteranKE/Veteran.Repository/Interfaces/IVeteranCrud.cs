@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Veteran.Repository.Models;
 using Veteran.Repository.Models.UserModels;
 
 namespace Veteran.Repository.Interfaces
@@ -18,5 +19,7 @@ namespace Veteran.Repository.Interfaces
         Task<User> GetUser(int id);
 
         Task<Photo> GetPhoto(int id);
+
+        
     }
 }
