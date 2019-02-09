@@ -1,8 +1,18 @@
 <div class="container mt-3">
   <div class="row">
-    <div *ngFor="let adv of advertisements">
-      <app-advertisement-card [advertisement]="adv"></app-advertisement-card>
-    </div>
+    <ul>
+
+      <div *ngFor="let adv of advertisements">
+        <div>
+          <li>
+              <app-advertisement-card [advertisement]="adv"></app-advertisement-card>
+
+          </li>
+
+        </div>
+      </div>
+    </ul>
+
   </div>
 </div>
 

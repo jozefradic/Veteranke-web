@@ -13,6 +13,7 @@ import { AdvertisementsComponent } from './advertisements comp/advertisements/ad
 import { AdvertisementDetailComponent } from './advertisements comp/advertisement-detail/advertisement-detail.component';
 import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.resolver';
 import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
+import { AdvertisementNewComponent } from './advertisements comp/advertisement-new/advertisement-new.component';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
@@ -22,7 +23,6 @@ export const appRoute: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            {path: 'register', component: RegisterComponent},
             {path: 'members', component: MembersComponent, resolve: {users: MemberResolver}},
             {path: 'members/:id', component: MemberDetailComponent,
                 resolve: {user: MemberDetailResolver}},
@@ -33,8 +33,11 @@ export const appRoute: Routes = [
             // {path: 'members', component: MembersComponent}
         ]
     },
+    {path: 'register', component: RegisterComponent},
+
     {path: 'advertisements', component: AdvertisementsComponent,
         resolve: {advertisement: AdvertisementResolver }},
+    {path: 'advertisements/new', component: AdvertisementNewComponent},
     { path: 'advertisements/:id', component: AdvertisementDetailComponent,
         resolve: {advertisement: AdvertisementDetailResolver}},
     // wild card, if path is ok, but doesnt match anything above, redirect to HOME

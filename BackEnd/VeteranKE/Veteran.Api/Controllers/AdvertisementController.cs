@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Veteran.Repository.DTOs;
 using Veteran.Repository.Interfaces;
 using Veteran.Repository.Models;
 
@@ -14,10 +16,12 @@ namespace Veteran.Api.Controllers
     public class AdvertisementController : ControllerBase
     {
         private readonly IAdvertisement _advertisement;
+        private readonly IMapper _mapper;
 
-        public AdvertisementController(IAdvertisement advertisement)
+        public AdvertisementController(IAdvertisement advertisement, IMapper mapper)
         {
             _advertisement = advertisement;
+            _mapper = mapper;
         }
         // GET: api/Advertisement
         [HttpGet]
@@ -37,8 +41,9 @@ namespace Veteran.Api.Controllers
 
         // POST: api/Advertisement
         [HttpPost]
-        public async Task<IActionResult> CreateNew([FromBody] Advertisement advertisement)
+        public async Task<IActionResult> CreateNew([FromBody] AdvertisementForCreationDto advertisementForCreationDto)
         {
+            var advertisement =_mapper.Map<Advertisement>(advertisementForCreationDto);
             var createdAdvertisement = await _advertisement.CreateNew(advertisement);
 
             return Ok(createdAdvertisement);

@@ -22,6 +22,7 @@ import { MemberEditComponent } from './members comp/member-edit/member-edit.comp
 import { AdvertisementsComponent } from './advertisements comp/advertisements/advertisements.component';
 import { AdvertisementCardComponent } from './advertisements comp/advertisement-card/advertisement-card.component';
 import { AdvertisementDetailComponent } from './advertisements comp/advertisement-detail/advertisement-detail.component';
+import { AdvertisementNewComponent } from './advertisements comp/advertisement-new/advertisement-new.component';
 
 import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
@@ -55,7 +56,8 @@ export function tokenGetter() {
       MemberEditComponent,
       AdvertisementsComponent,
       AdvertisementCardComponent,
-      AdvertisementDetailComponent
+      AdvertisementDetailComponent,
+      AdvertisementNewComponent
    ],
    imports: [
       BrowserModule,

@@ -37,6 +37,7 @@ namespace Veteran.Api.Helpers
             CreateMap<PhotoForCreationDto, Photo>();
 
             CreateMap<Advertisement, AdvertisementForDetailDto>();
+            CreateMap<AdvertisementForCreationDto, Advertisement>();
         }
     }
 }

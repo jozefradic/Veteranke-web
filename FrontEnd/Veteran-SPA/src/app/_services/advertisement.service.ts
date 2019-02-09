@@ -20,4 +20,8 @@ getAdvertisement(id): Observable<Advertisement> {
   return this.http.get<Advertisement>(this.baseUrl + 'advertisement/' + id);
 }
 
+createNew(model: any) {
+  return this.http.post(this.baseUrl + 'advertisement', model);
+}
+
 }

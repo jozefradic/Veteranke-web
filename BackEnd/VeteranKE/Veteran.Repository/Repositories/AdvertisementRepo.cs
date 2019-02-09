@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Veteran.Repository.Data;
+using Veteran.Repository.DTOs;
 using Veteran.Repository.Interfaces;
 using Veteran.Repository.Models;
 
@@ -32,6 +33,7 @@ namespace Veteran.Repository.Repositories
         {
             await _context.Advertisements.AddAsync(advertisement);
             await _context.SaveChangesAsync();
+
             return advertisement;
         }
                 

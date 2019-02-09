@@ -28,12 +28,11 @@ namespace Veteran.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsersController()
         {
             var users = await _repo.GetUsers();
 
             var usersToReturn = _mapper.Map<IEnumerable<UserListDto>>(users);
-
 
             return Ok(usersToReturn);
         }

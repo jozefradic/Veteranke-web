@@ -1,18 +1,23 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
-  <h2 class="text-center text-primary">Sing up</h2>
-  <hr>
+<div class="container col-8">
+  <div class="center">
+    <form #registerForm="ngForm" (ngSubmit)="register()" class="form-horizontal"> 
+        <h2 class="text-center text-primary">Sing up</h2>
+        <hr>
+      
+        <div class="form-group">
+          <input type="text" class="form-control" required name="username" 
+            [(ngModel)]="registrationInfo.username" placeholder="Username">
+        </div>
+        
+        <div class="form-group">
+          <input type="password" class="form-control" required name="password" 
+            [(ngModel)]="registrationInfo.password" placeholder="Password">
+        </div>
+      
+        <div class="form-group">
+          <button [disabled]="!registerForm.valid" class="btn btn-success" type="submit">Register</button>
+        </div>
+      </form>
+  </div>
+</div>
 
-  <div class="form-group">
-    <input type="text" class="form-control" required name="username" 
-     [(ngModel)]="registrationInfo.username" placeholder="Username">
-  </div>
-  
-  <div class="form-group">
-    <input type="password" class="form-control" required name="password" 
-     [(ngModel)]="registrationInfo.password" placeholder="Password">
-  </div>
-
-  <div class="form-group">
-    <button [disabled]="!registerForm.valid" class="btn btn-success" type="submit">Register</button>
-  </div>
-</form>
