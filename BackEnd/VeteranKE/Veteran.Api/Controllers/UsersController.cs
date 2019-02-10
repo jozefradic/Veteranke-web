@@ -13,7 +13,6 @@ using Veteran.Repository.Models.UserModels;
 
 namespace Veteran.Api.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
@@ -37,7 +36,7 @@ namespace Veteran.Api.Controllers
             return Ok(usersToReturn);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name ="GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);

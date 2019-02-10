@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +24,7 @@ using Microsoft.IdentityModel.Tokens;
 using Veteran.Api.Helpers;
 using Veteran.Repository.Data;
 using Veteran.Repository.Interfaces;
+using Veteran.Repository.Models.UserModels;
 using Veteran.Repository.Repositories;
 
 namespace Veteran.Api
@@ -37,24 +41,26 @@ namespace Veteran.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
-            services.AddAutoMapper();
-            //cloudinary services
-            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+            
             services.AddDbContext<DataContext>(x => 
             x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly("Veteran.Api")));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(opt =>
-                {
-                    opt.SerializerSettings.ReferenceLoopHandling =
-                        Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                });
-            // service is created once per request within the scope
-            // if we implement iauth, we implement auth
-            services.AddScoped<IAuth, Auth>();
-            services.AddScoped<IVeteranCrud, VeteranRepo>();
-            services.AddScoped<IAdvertisement, AdvertisementRepo>();
+
+            // Configure Identity
+            IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireDigit = false;
+                opt.Password.RequiredLength = 4;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+            });
+            // new instance of identity buildder, passing params
+            builder = new IdentityBuilder(builder.UserType, typeof(Role), builder.Services);
+            // tell EF we want use identity in EF
+            builder.AddEntityFrameworkStores<DataContext>();
+            builder.AddRoleValidator <RoleValidator<Role>>();
+            builder.AddRoleManager<RoleManager<Role>>();
+            builder.AddSignInManager<SignInManager<User>>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -68,6 +74,42 @@ namespace Veteran.Api
                         ValidateAudience = false
                     };
                 });
+            // Policy based authorization
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin","Moderator"));
+                options.AddPolicy("VipOnly", policy => policy.RequireRole("VIP"));
+            });
+
+
+            services.AddMvc(options =>
+                {
+                    var policy = new AuthorizationPolicyBuilder()
+                        .RequireAuthenticatedUser()
+                        .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+                        
+                }
+            )
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(opt =>
+                {
+                    opt.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
+            services.AddCors();
+            services.AddAutoMapper();
+            //cloudinary services
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
+            // service is created once per request within the scope
+            // if we implement iauth, we implement auth
+            //services.AddScoped<IAuth, Auth>();
+            services.AddScoped<IVeteranCrud, VeteranRepo>();
+            services.AddScoped<IAdvertisement, AdvertisementRepo>();
+
             // seed data
             services.AddTransient<Seed>();
             
@@ -103,7 +145,7 @@ namespace Veteran.Api
             //app.UseHttpsRedirection();
 
             // if we want seed users
-            //seeder.SeedUsers();
+            seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseMvc();

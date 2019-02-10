@@ -1,6 +1,6 @@
 [
   {
-    "Name": "Katie",
+    "UserName": "Katie",
     "DateOfBirth": "1972-05-11",
     "Password": "password",
     "Created": "2017-01-06",
@@ -15,7 +15,7 @@
     ]
   },
   {
-    "Name": "Shelia",
+    "UserName": "Shelia",
     "DateOfBirth": "1981-11-13",
     "Password": "password",
     "Created": "2017-01-13",
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "Name": "Harriet",
+    "UserName": "Harriet",
     "DateOfBirth": "1962-05-23",
     "Password": "password",
     "Created": "2017-03-24",
@@ -46,7 +46,7 @@
   },
 
   {
-    "Name": "Pope",
+    "UserName": "Pope",
     "DateOfBirth": "1992-08-19",
     "Password": "password",
     "Created": "2017-05-12",
@@ -61,7 +61,7 @@
     ]
   },
   {
-    "Name": "Hodges",
+    "UserName": "Hodges",
     "DateOfBirth": "1991-07-29",
     "Password": "password",
     "Created": "2017-03-03",
@@ -76,7 +76,7 @@
     ]
   },
   {
-    "Name": "Cross",
+    "UserName": "Cross",
     "DateOfBirth": "1970-04-09",
     "Password": "password",
     "Created": "2017-08-29",

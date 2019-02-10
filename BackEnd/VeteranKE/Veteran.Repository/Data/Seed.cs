@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Veteran.Repository.Models.UserModels;
 
@@ -8,50 +10,55 @@ namespace Veteran.Repository.Data
 {
     public class Seed
     {
-        private readonly DataContext _context;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public Seed(DataContext context)
+        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
-            _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public void SeedUsers()
         {
-            var userData = System.IO.File.ReadAllText("../Veteran.Repository/Data/UserSeedData.json");
-
-            //serialize data from text to object
-
-            var users = JsonConvert.DeserializeObject<List<User>>(userData);
-
-            foreach (var user in users)
+            if (!_userManager.Users.Any())
             {
-                byte[] passwordHash, passwordSalt;
-                CreatePassword("password", out passwordHash, out passwordSalt);
+                var userData = System.IO.File.ReadAllText("../Veteran.Repository/Data/UserSeedData.json");
+                
+                //serialize data from text to object
+                var users = JsonConvert.DeserializeObject<List<User>>(userData);
 
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalt;
 
-                user.Name = user.Name.ToLower();
+                var roles = new List<Role>
+                {
+                    new Role{Name="Member"},
+                    new Role{Name="Admin"},
+                    new Role{Name="Moderator"},
+                    new Role{Name="VIP"}
+                };
 
-                _context.Users.Add(user);
-            }
+                foreach (var role in roles)
+                {
+                    _roleManager.CreateAsync(role).Wait();
+                }
+                foreach (var user in users)
+                {
+                    _userManager.CreateAsync(user, "password").Wait();
+                    _userManager.AddToRoleAsync(user, "Member").Wait();
+                }
 
-            _context.SaveChanges();
-        }
+                var adminUser = new User
+                {
+                    UserName = "Admin"
+                };
+                IdentityResult result = _userManager.CreateAsync(adminUser, "password").Result;
 
-        private void CreatePassword(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            // -computes hash code(hash- based message auth code- HMAC)
-            // -initialize a new instance of class with specified key data
-            // -give us key (passwordSalt) and we use this key to unlock passwordHash
-            // -comparing, we use passwordSalt to unlock passwordHash 
-            // (password hash and salt stored in db),and computed hash of user input password
-            // -deeper inherittance contains Dispose(), to call this method as soon as we are finished
-            // is to surround using statement
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                if(result.Succeeded)
+                {
+                    var admin = _userManager.FindByNameAsync("Admin").Result;
+                    _userManager.AddToRolesAsync(admin, new[] { "Admin", "Moderator" }).Wait();
+                }
+
             }
         }
     }

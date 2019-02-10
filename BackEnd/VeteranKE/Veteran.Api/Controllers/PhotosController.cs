@@ -17,7 +17,6 @@ using Veteran.Repository.Models.UserModels;
 
 namespace Veteran.Api.Controllers
 {
-    [Authorize]
     [Route("api/{route}/{userId}/photos")]
     [ApiController]
     public class PhotosController : ControllerBase

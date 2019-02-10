@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veteran.Api", "Veteran.Api\Veteran.Api.csproj", "{8F01C171-46C4-48A3-9529-76FCD6EB78F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veteran.Repository", "Veteran.Repository\Veteran.Repository.csproj", "{EE0C9B00-55B6-451D-B6BB-682D5C3BD0B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veteran.Repository", "Veteran.Repository\Veteran.Repository.csproj", "{EE0C9B00-55B6-451D-B6BB-682D5C3BD0B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

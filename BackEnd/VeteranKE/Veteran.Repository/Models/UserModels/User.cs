@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Veteran.Repository.Models.UserModels
 {
-    public class User
+    public class User : IdentityUser<int>
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
@@ -20,6 +17,8 @@ namespace Veteran.Repository.Models.UserModels
 
         public ICollection<Advertisement> Advertisements { get; set; }
         public ICollection<Article> Articles { get; set; }
+
+        public ICollection<UserRole> UserRoles { get; set; }
 
 
     }
