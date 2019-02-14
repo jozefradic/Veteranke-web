@@ -86,8 +86,8 @@ namespace Veteran.Api.Controllers
                     //uploadResult = _cloudinary.Upload(uploadParams);
                 }
             }
-            photoForCreationDto.Url = uploadResult.Uri.ToString();
-            photoForCreationDto.PublicId = uploadResult.PublicId;
+            //photoForCreationDto.Url = uploadResult.Uri.ToString();
+            //photoForCreationDto.PublicId = uploadResult.PublicId;
 
             var photo = _mapper.Map<Photo>(photoForCreationDto);
 

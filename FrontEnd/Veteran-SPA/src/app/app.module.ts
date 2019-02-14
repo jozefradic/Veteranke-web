@@ -14,6 +14,8 @@ import { ValueComponent } from './value/value.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+
 import { MembersComponent } from './members comp/members/members.component';
 import { MemberCardComponent } from './members comp/member-card/member-card.component';
 import { MemberDetailComponent } from './members comp/member-detail/member-detail.component';
@@ -39,6 +41,8 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.resolver';
 import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
 
+import { HasRoleDirective } from './_directive/hasRole.directive';
+
 export function tokenGetter() {
    return localStorage.getItem('token');
 }
@@ -57,7 +61,9 @@ export function tokenGetter() {
       AdvertisementsComponent,
       AdvertisementCardComponent,
       AdvertisementDetailComponent,
-      AdvertisementNewComponent
+      AdvertisementNewComponent,
+      AdminPanelComponent,
+      HasRoleDirective
    ],
    imports: [
       BrowserModule,

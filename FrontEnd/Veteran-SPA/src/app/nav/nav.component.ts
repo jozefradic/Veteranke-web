@@ -25,6 +25,7 @@ export class NavComponent implements OnInit {
     this.authService.login(this.loginCredential).subscribe(next => {
       this.alertify.success('Logged in succesfully');
       this.loginForm.reset();
+      window.location.reload();
 
     }, error => {
       this.alertify.error(error);
@@ -42,9 +43,12 @@ export class NavComponent implements OnInit {
   loggOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-
+    this.authService.decodedToken = null;
+    this.authService.currentUser = null;
     this.alertify.message('Logged out');
     this.router.navigate(['/home']);
+    window.location.reload();
+
   }
 
   cancelLogin() {

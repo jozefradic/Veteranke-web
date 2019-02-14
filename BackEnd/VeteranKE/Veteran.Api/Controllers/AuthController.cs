@@ -60,6 +60,9 @@ namespace Veteran.Api.Controllers
         {
             var user = await _userManager.FindByNameAsync(userForLoginDto.UserName);
 
+            if (user == null)
+                return Unauthorized();
+
             var result = await _signInManager
                 .CheckPasswordSignInAsync(user, userForLoginDto.Password,false);
 
@@ -72,7 +75,7 @@ namespace Veteran.Api.Controllers
 
                 return Ok(new
                 {
-                    token = GenerateJwtToken(appUser),
+                    token = GenerateJwtToken(appUser).Result,
                     user = userToReturn
                 });
             }
