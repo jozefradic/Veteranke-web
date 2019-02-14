@@ -14,6 +14,7 @@ using Veteran.Api.Helpers;
 using Veteran.Repository.DTOs;
 using Veteran.Repository.Interfaces;
 using Veteran.Repository.Models.UserModels;
+using System.IO;
 
 namespace Veteran.Api.Controllers
 {
@@ -66,14 +67,23 @@ namespace Veteran.Api.Controllers
             {
                 using (var stream = file.OpenReadStream())
                 {
-                    var uploadParams = new ImageUploadParams()
+                    string path = Path.GetTempPath() + file.FileName;
+                    //Path.GetTem
+                    using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.ReadWrite))
                     {
-                        File = new FileDescription(file.Name, stream),
-                        Transformation = new Transformation()
-                        .Width(500).Height(500).Crop("fill").Gravity("face")
-                    };
-                    //cloudinary upload method
-                    uploadResult = _cloudinary.Upload(uploadParams);
+                        //fs.CopyTo(stream);
+                        stream.CopyTo(fs);
+                    }
+
+
+                    //var uploadParams = new ImageUploadParams()
+                    //{
+                    //    File = new FileDescription(file.Name, stream),
+                    //    Transformation = new Transformation()
+                    //    .Width(500).Height(500).Crop("fill").Gravity("face")
+                    //};
+                    ////cloudinary upload method
+                    //uploadResult = _cloudinary.Upload(uploadParams);
                 }
             }
             photoForCreationDto.Url = uploadResult.Uri.ToString();
