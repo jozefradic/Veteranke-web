@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
@@ -14,12 +14,28 @@ export class NavComponent implements OnInit {
   logBtn = false;
   // to store username and pass
   loginCredential: any = {};
+
+  toggleNavbar = true;
 // inject module auth service
   constructor(public authService: AuthService, private alertify: AlertifyService,
-    private router: Router ) { }
+    private router: Router) {
+    }
 
   ngOnInit() {
   }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const nav = document.getElementById('navBar');
+    if (number > 100) {
+      nav.classList.add('navbar1');
+    } else {
+      nav.classList.remove('navbar1');
+    }
+  }
+
+
 // send loginCredential(premenna z navbar) and send it to auth.service (tam však premennu volame model)
   login() {
     this.authService.login(this.loginCredential).subscribe(next => {

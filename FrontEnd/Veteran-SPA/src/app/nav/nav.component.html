@@ -1,56 +1,66 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="navBar">
 
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item" routerLinkActive="active">
-      <a class="nav-link" [routerLink]="['/home']">Home </a>
-    </li>
-    <li class="nav-item" routerLinkActive="active"> 
-      <a class="nav-link" [routerLink]="['/members']" >Členovia</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active"> 
-      <a class="nav-link" [routerLink]="['/advertisements']" >Inzeráty</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active" >
-      <a class="nav-link" [routerLink]="['/register']" >Register</a>
-    </li>
-    <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active" >
-      <a class="nav-link" [routerLink]="['/admin']" >Admin</a>
-    </li>
-    <li *ngIf="loggedIn()" class="nav-item">
-      <a class="nav-link" (click)="loggOut()">Logout</a>
-    </li>
-  </ul>
+    <a class="navbar-brand" href="#">Veteran Ke</a>
+    <button class="navbar-toggler colapse" type="button" (click) = "toggleNavbar =!toggleNavbar"
+    data-toggle="collapse" data-target="#navbarToggler" 
+    aria-controls="navbarToggler" aria-expanded="false" 
+    aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div *ngIf="!logBtn && !loggedIn()">
-    <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit" (click)="logInForm()">Log</button>
-    <a [routerLink]="['/register']"> 
-      <button class="btn btn-success my-2 my-sm-0" type="submit" >Register</button>
-    </a>    
-  </div>
+  <div class="collapse navbar-collapse" id="navbarToggler" [ngbCollapse]="toggleNavbar">
+    
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active"> 
+        <a class="nav-link" [routerLink]="['/home']">Home </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/members']" >Členovia</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" > 
+        <a class="nav-link" [routerLink]="['/advertisements']" >Inzeráty</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/registracia']" >Register</a>
+      </li>
+      <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active" >
+        <a class="nav-link" [routerLink]="['/admin']" >Admin</a>
+      </li>
+      <li *ngIf="loggedIn()" class="nav-item">
+        <a class="nav-link" (click)="loggOut()">Logout</a>
+      </li>
+    </ul>
 
-  <div *ngIf="loggedIn()" class="dropdown" dropdown>
-    <a class="dropdown-toggle text-light" dropdownToggle>
-      Welcome {{authService.decodedToken?.unique_name | titlecase}}
-    </a>
-  
-    <div class="dropdown-menu" *bsDropdownMenu>
-      <a class="dropdown-item" [routerLink]="['/member/edit']">
-        <i class="fa fa-user"></i> Edit profile</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" (click)="loggOut()"><i class="fa fa-sign-out"></i>LogOut</a>
+    <div *ngIf="!logBtn && !loggedIn()">
+      <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit" (click)="logInForm()">Log</button>
+      <a [routerLink]="['/register']"> 
+        <button class="btn btn-success my-2 my-sm-0" type="submit" >Register</button>
+      </a>    
     </div>
+
+    <div *ngIf="loggedIn()" class="dropdown" dropdown>
+      <a class="dropdown-toggle text-light" dropdownToggle>
+        Welcome {{authService.decodedToken?.unique_name | titlecase}}
+      </a>
+    
+      <div class="dropdown-menu" *bsDropdownMenu>
+        <a class="dropdown-item" [routerLink]="['/member/edit']">
+          <i class="fa fa-user"></i> Edit profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="loggOut()"><i class="fa fa-sign-out"></i>LogOut</a>
+      </div>
+    </div>
+
+    <form *ngIf="!loggedIn() && logBtn" #loginForm="ngForm" id="loginForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+      <input class="form-control mr-sm-2" type="text" placeholder="Username" 
+      required [(ngModel)]="loginCredential.username" name="username">
+      <input class="form-control mr-sm-2" type="password" placeholder="Password" 
+      required [(ngModel)]="loginCredential.password" name="password">
+      <button [disabled]="!loginForm.valid" form="loginForm" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+      <button class="btn btn-default" type="submit" (click)="cancelLogin()">Cancel</button>
+
+    </form>
+
   </div>
-
-  <form *ngIf="!loggedIn() && logBtn" #loginForm="ngForm" id="loginForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
-    <input class="form-control mr-sm-2" type="text" placeholder="Username" 
-    required [(ngModel)]="loginCredential.username" name="username">
-    <input class="form-control mr-sm-2" type="password" placeholder="Password" 
-    required [(ngModel)]="loginCredential.password" name="password">
-    <button [disabled]="!loginForm.valid" form="loginForm" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
-    <button class="btn btn-default" type="submit" (click)="cancelLogin()">Cancel</button>
-
-  </form>
-
-  
 
 </nav>
