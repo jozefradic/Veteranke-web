@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="navBar">
 
-    <a class="navbar-brand" href="#">Veteran Ke</a>
+    <a class="navbar-brand" href="#"><h3>Veterán KE</h3></a>
     <button class="navbar-toggler colapse" type="button" (click) = "toggleNavbar =!toggleNavbar"
     data-toggle="collapse" data-target="#navbarToggler" 
     aria-controls="navbarToggler" aria-expanded="false" 
@@ -12,16 +12,16 @@
     
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active"> 
-        <a class="nav-link" [routerLink]="['/home']">Home </a>
+        <a class="nav-link" [routerLink]="['/home']"> <h3>Domov</h3>  </a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
-        <a class="nav-link" [routerLink]="['/members']" >Členovia</a>
+        <a class="nav-link" [routerLink]="['/members']" ><h3>Členovia</h3></a>
       </li>
       <li class="nav-item" routerLinkActive="active" > 
-        <a class="nav-link" [routerLink]="['/advertisements']" >Inzeráty</a>
+        <a class="nav-link" [routerLink]="['/advertisements']" ><h3>Inzeráty</h3></a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
-        <a class="nav-link" [routerLink]="['/registracia']" >Register</a>
+        <a class="nav-link" [routerLink]="['/registracia']" ><h3>Registrácia</h3></a>
       </li>
       <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/admin']" >Admin</a>

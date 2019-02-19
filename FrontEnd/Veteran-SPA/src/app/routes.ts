@@ -36,7 +36,6 @@ export const appRoute: Routes = [
         ]
     },
     {path: 'registracia', component: RegisterComponent},
-
     {path: 'advertisements', component: AdvertisementsComponent,
         resolve: {advertisement: AdvertisementResolver }},
     {path: 'advertisements/new', component: AdvertisementNewComponent},

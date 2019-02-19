@@ -17,19 +17,12 @@ namespace Veteran.Api.Helpers
                 .ForMember(dest => dest.PhotoUrl, opt =>
                 {
                     opt.MapFrom(src => src.Photos.FirstOrDefault().Url);
-                })
-                .ForMember(dest => dest.Age, opt =>
-                {
-                    opt.MapFrom(d => d.DateOfBirth.CalculateAge());
                 });
+                
             CreateMap<User, UserForDetailedDto>()
                 .ForMember(dest => dest.PhotoUrl, opt =>
                 {
                     opt.MapFrom(src => src.Photos.FirstOrDefault().Url);
-                })
-                .ForMember(dest => dest.Age, opt =>
-                {
-                    opt.MapFrom(d => d.DateOfBirth.CalculateAge());
                 });
             CreateMap<UserForRegistrationDto, User>();
 

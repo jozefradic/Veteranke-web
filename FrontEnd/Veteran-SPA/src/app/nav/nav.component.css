@@ -5,3 +5,7 @@
 .navbar1 {
     background-color: black;
 }
+
+h3 {
+    -webkit-text-stroke: 1px black;
+}

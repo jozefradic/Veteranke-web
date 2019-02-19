@@ -9,8 +9,8 @@ using Veteran.Repository.Data;
 namespace Veteran.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190210164120_IdentityInitial")]
-    partial class IdentityInitial
+    [Migration("20190219144528_ImproveRegistration")]
+    partial class ImproveRegistration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -207,14 +207,16 @@ namespace Veteran.Api.Migrations
 
                     b.Property<DateTime>("Created");
 
-                    b.Property<DateTime>("DateOfBirth");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
                     b.Property<DateTime>("LastActive");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 

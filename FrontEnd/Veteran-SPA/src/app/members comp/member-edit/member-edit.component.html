@@ -15,7 +15,7 @@
   <div class="row">
 
     <div class="col-sm-4 kartis">
-      <img class="card-img-top img-thumbnail" src="{{user.photoUrl}}" alt="{{user.name}}">
+      <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.userName}}">
       <div class="card-body">
         <div>
           <strong>Created:</strong>
@@ -30,7 +30,7 @@
     <div class="col-sm-8">
       <div class="tab-panel">
         <tabset>
-          <tab heading="Edit City {{user.name}}" index="0">
+          <tab heading="Edit City {{user.userName}}" index="0">
             <form #editForm="ngForm" id="editForm" (ngSubmit)="updateUser()">
               <h4>City</h4>
               <textarea name="city" rows="6" class="form-control"
