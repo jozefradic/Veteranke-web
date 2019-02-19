@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="navBar">
 
-    <a class="navbar-brand" href="#"><h3>Veterán KE</h3></a>
+    
     <button class="navbar-toggler colapse" type="button" (click) = "toggleNavbar =!toggleNavbar"
     data-toggle="collapse" data-target="#navbarToggler" 
     aria-controls="navbarToggler" aria-expanded="false" 
@@ -12,22 +12,22 @@
     
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active"> 
-        <a class="nav-link" [routerLink]="['/home']"> <h3>Domov</h3>  </a>
+        <a class="nav-link" [routerLink]="['/home']"> <h5>Domov</h5>  </a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
-        <a class="nav-link" [routerLink]="['/members']" ><h3>Členovia</h3></a>
+        <a class="nav-link" [routerLink]="['/members']" ><h5>Členovia</h5></a>
       </li>
       <li class="nav-item" routerLinkActive="active" > 
-        <a class="nav-link" [routerLink]="['/advertisements']" ><h3>Inzeráty</h3></a>
+        <a class="nav-link" [routerLink]="['/advertisements']" ><h5>Inzeráty</h5></a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
-        <a class="nav-link" [routerLink]="['/registracia']" ><h3>Registrácia</h3></a>
+        <a class="nav-link" [routerLink]="['/registracia']" ><h5>Registrácia</h5></a>
       </li>
       <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active" >
-        <a class="nav-link" [routerLink]="['/admin']" >Admin</a>
+        <a class="nav-link" [routerLink]="['/admin']" ><h5>Admin</h5></a>
       </li>
       <li *ngIf="loggedIn()" class="nav-item">
-        <a class="nav-link" (click)="loggOut()">Logout</a>
+        <a class="nav-link" (click)="loggOut()"><h5>Logout</h5></a>
       </li>
     </ul>
 
@@ -40,14 +40,14 @@
 
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
-        Welcome {{authService.decodedToken?.unique_name | titlecase}}
+        <h5>Welcome {{authService.decodedToken?.unique_name | titlecase}}</h5>
       </a>
     
       <div class="dropdown-menu" *bsDropdownMenu>
         <a class="dropdown-item" [routerLink]="['/member/edit']">
-          <i class="fa fa-user"></i> Edit profile</a>
+          <i class="fa fa-user"></i> <h6>Edit profile</h6></a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="loggOut()"><i class="fa fa-sign-out"></i>LogOut</a>
+        <a class="dropdown-item" (click)="loggOut()"><i class="fa fa-sign-out"></i><h6>LogOut</h6></a>
       </div>
     </div>
 
