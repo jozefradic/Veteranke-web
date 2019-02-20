@@ -8,6 +8,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent implements OnInit {
 title = 'Veteran KE';
+
   constructor(config: NgbCarouselConfig) {
     config.interval = 2000;
   }

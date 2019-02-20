@@ -1,9 +1,35 @@
-<div class="card m-4">
-  <div class="card-header">
-      <div class="card-title">{{advertisement.name}}</div>
-      <button class="btn btn-primary" [routerLink]="['/advertisements/', advertisement.id]">
-      <i class="fa fa-ambulance"></i>  
-      </button>
+<div class="card w-100 mb-1 ">
+  <div class="card-body w-100">
+  
+        <div class=" card-header bg-secondary ">
+          <h4 class="font-weight-bold text-capitalize">{{advertisement.name}}</h4> 
+          <h6 >{{advertisement.createdDate}}</h6>
+        </div>
+       
+      
+
+  <table class="table"> 
+    <thead class="bg-light">
+      <tr>
+        <th>typ</th>
+        <th>rok</th>
+        <th>kraj</th>
+        <th>cena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>typ</td>
+        <td>rok</td>
+        <td>kraj {{advertisement.user.city}}</td>
+        <td>cena</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <div class="card-body">
+    <button class="btn btn-primary" [routerLink]="['/advertisements/', advertisement.id]">
+      <i class="fa fa-info-circle"></i>  
+    </button>
   </div>
-  <div class="card-body">{{advertisement.createdDate}}</div>
 </div>

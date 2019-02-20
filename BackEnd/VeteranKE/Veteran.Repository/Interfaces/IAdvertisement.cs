@@ -11,6 +11,7 @@ namespace Veteran.Repository.Interfaces
     {
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
+        Task<bool> SaveAll();
 
         Task<Advertisement> CreateNew(Advertisement advertisement);
         Task<IEnumerable<Advertisement>> GetAdvertisements();

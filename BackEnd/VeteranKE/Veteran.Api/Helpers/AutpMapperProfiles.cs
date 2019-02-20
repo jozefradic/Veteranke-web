@@ -33,6 +33,7 @@ namespace Veteran.Api.Helpers
 
             CreateMap<Advertisement, AdvertisementForDetailDto>();
             CreateMap<AdvertisementForCreationDto, Advertisement>();
+            CreateMap<AdvertisementForUpdateDto, Advertisement>();
         }
     }
 }

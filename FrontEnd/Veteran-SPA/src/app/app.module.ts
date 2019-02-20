@@ -27,6 +27,7 @@ import { AdvertisementsComponent } from './advertisements comp/advertisements/ad
 import { AdvertisementCardComponent } from './advertisements comp/advertisement-card/advertisement-card.component';
 import { AdvertisementDetailComponent } from './advertisements comp/advertisement-detail/advertisement-detail.component';
 import { AdvertisementNewComponent } from './advertisements comp/advertisement-new/advertisement-new.component';
+import { AdvertisementEditComponent } from './advertisements comp/advertisement-edit/advertisement-edit.component';
 
 import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
@@ -42,6 +43,7 @@ import { MemberResolver } from './_resolvers/member.resolver';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.resolver';
 import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
+import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
 
 import { HasRoleDirective } from './_directive/hasRole.directive';
 
@@ -64,6 +66,7 @@ export function tokenGetter() {
       AdvertisementCardComponent,
       AdvertisementDetailComponent,
       AdvertisementNewComponent,
+      AdvertisementEditComponent,
       AdminPanelComponent,
       HasRoleDirective
    ],
@@ -100,7 +103,8 @@ export function tokenGetter() {
       MemberEditResolver,
       AdvertisementService,
       AdvertisementDetailResolver,
-      AdvertisementResolver
+      AdvertisementResolver,
+      AdvertisementEditResolver
    ],
    bootstrap: [
       AppComponent

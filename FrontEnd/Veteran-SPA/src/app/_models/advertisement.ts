@@ -1,4 +1,5 @@
 import { Photo } from './photo';
+import { User } from './user';
 
 export interface Advertisement {
     id: number;
@@ -10,4 +11,6 @@ export interface Advertisement {
     type: string;
     describe: string;
     price: number;
+
+    user: User;
 }

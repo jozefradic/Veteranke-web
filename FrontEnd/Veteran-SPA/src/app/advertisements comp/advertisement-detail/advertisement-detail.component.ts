@@ -15,6 +15,7 @@ advertisement: Advertisement;
   ngOnInit() {
     this.route.data.subscribe( data => {
       this.advertisement = data['advertisement'];
+      console.log(this.advertisement);
     });
   }
 

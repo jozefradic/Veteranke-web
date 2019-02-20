@@ -15,6 +15,8 @@ import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.r
 import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
 import { AdvertisementNewComponent } from './advertisements comp/advertisement-new/advertisement-new.component';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { AdvertisementEditComponent } from './advertisements comp/advertisement-edit/advertisement-edit.component';
+import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
@@ -35,6 +37,8 @@ export const appRoute: Routes = [
         children: [
             {path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]},
+            {path: 'advertisements/:id/edit', component: AdvertisementEditComponent,
+                resolve: {advertisement: AdvertisementEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']}},
             // {path: 'members', component: MembersComponent}
         ]

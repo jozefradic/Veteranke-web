@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -53,9 +54,20 @@ namespace Veteran.Api.Controllers
         }
 
         // PUT: api/Advertisement/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("{id}/edit")]
+        [HttpPut("{id}/edit")]
+        public async Task<IActionResult> UpdateAdvertisement(int id, AdvertisementForUpdateDto advertisementForUpdateDto)
         {
+            //if (advertisementForCreationDto.UserId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            //    return Unauthorized();
+
+            var advertisementFromRepo = await _advertisement.GetAdvertisement(id);
+
+            _mapper.Map(advertisementForUpdateDto, advertisementFromRepo);
+
+            if (await _advertisement.SaveAll())
+                return NoContent();
+            throw new Exception($"Updating user {id} failed on save");
         }
 
         // DELETE: api/ApiWithActions/5
