@@ -11,6 +11,9 @@ namespace Veteran.Repository.Models
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
 
+        public string Desc { get; set; }
+        public int Price { get; set; }
+
         public User User { get; set; }
         public int? UserId { get; set; }
 

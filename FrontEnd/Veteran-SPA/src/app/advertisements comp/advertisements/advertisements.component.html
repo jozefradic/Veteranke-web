@@ -1,18 +1,27 @@
-<div class="container mt-3">
-  <div class="row">
-    <ul>
-
-      <div *ngFor="let adv of advertisements">
-        <div>
-          <li>
-              <app-advertisement-card [advertisement]="adv"></app-advertisement-card>
-
-          </li>
-
-        </div>
+<div class="jumbotron">
+    <li class="list-inline-item"><button class="btn btn-primary" 
+      [routerLink]="['/advertisements/new']" >
+      <i class="fa fa-plus"></i></button></li>
+  
+    <div class="container mt-3">
+      <div class="row">
+    
+        <ul>
+    
+          <div *ngFor="let adv of advertisements">
+            <div>
+              <li>
+                  <app-advertisement-card [advertisement]="adv"></app-advertisement-card>
+    
+              </li>
+    
+            </div>
+          </div>
+        </ul>
+    
       </div>
-    </ul>
-
-  </div>
+    </div>
 </div>
+
+
 

@@ -11,6 +11,9 @@ namespace Veteran.Repository.DTOs
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
 
+        public string Desc { get; set; }
+        public int Price { get; set; }
+
         public int? UserId { get; set; }
 
         public AdvertisementForCreationDto()

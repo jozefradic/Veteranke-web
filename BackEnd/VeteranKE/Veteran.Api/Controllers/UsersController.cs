@@ -26,6 +26,7 @@ namespace Veteran.Api.Controllers
             _mapper = mapper;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetUsersController()
         {
@@ -35,7 +36,7 @@ namespace Veteran.Api.Controllers
 
             return Ok(usersToReturn);
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}", Name ="GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {

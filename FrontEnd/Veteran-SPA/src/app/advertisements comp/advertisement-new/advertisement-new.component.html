@@ -1,28 +1,58 @@
-<div class="container">
-    <div class="center">
-      <form #registerForm="ngForm" class="form" (ngSubmit)="create()"> 
+<div class="jumbotron">
+    <div class="container mt-3">
+      <form [formGroup]="advForm" (ngSubmit)="create()" class="form-horizontal"> 
           <h2 class="text-center text-info">Inzerát</h2>
           <hr>
           
           <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Názov</label>
             <div class="col-sm-8">
-                <input id="name" type="text" class="form-control" required name="name" 
-                placeholder="Name" [(ngModel)]="newAdvertisement.Name">
+                <input type="text" 
+                [ngClass]="{'is-invalid': advForm.get('name').errors 
+                && advForm.get('name').touched}"  
+                class="form-control is-invalid" 
+                formControlName="name"   
+                placeholder="Názov"                               
+                >
+                <div class="invalid-feedback"> Prosím zadajte názov</div>
             </div>            
           </div>
           
           <div class="form-group row">
             <label for="desc" class="col-sm-2 col-form-label">Popis</label>
             <div class="col-sm-8">
-                <textarea id="desc" type="text" class="form-control" name="desc" 
-                placeholder="Description" [(ngModel)]="newAdvertisement.Description"></textarea>
+                <textarea type="text"
+                [ngClass]="{'is-invalid': advForm.get('desc').errors 
+                && advForm.get('desc').touched}"
+                class="form-control is-invalid" formControlName="desc" 
+                placeholder="Sem zadajte popis"></textarea>
+                <div class="invalid-feedback"> Prosím zadajte popis produktu</div>
+
             </div>            
+          </div>
+
+          <div class="form-group row">
+              <label for="price" class="col-sm-2 col-form-label">Cena</label>
+              <div class="col-sm-8">
+                <input type="text" 
+                [ngClass]="{'is-invalid': advForm.get('price').touched &&
+                        advForm.get('price').errors}"
+                class="form-control" formControlName="price" 
+                >
+                <div class="invalid-feedback" *ngIf="advForm.get('price').touched && advForm.get('price').errors" >
+                  <div *ngIf="!!advForm.get('price').errors.required"> Prosím zadajte sumu</div>
+                  <div *ngIf="!!advForm.get('price').errors.pattern"> Suma musí obsahovať len číslice</div>
+
+              </div>
+              </div>            
           </div>
         
           <div class="form-group row">
-            <button [disabled]="!registerForm.valid" class="btn btn-success" type="submit">Create</button>
+            <button [disabled]="!advForm.valid" class="btn btn-success" type="submit">Create</button>
           </div>
         </form>
     </div>
   </div>
+
+  <p>Form value: {{advForm.value | json}}</p>
+  <p>Form status: {{advForm.status | json}}</p>

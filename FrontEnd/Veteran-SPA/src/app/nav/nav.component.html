@@ -20,10 +20,10 @@
       <li class="nav-item" routerLinkActive="active" > 
         <a class="nav-link" [routerLink]="['/advertisements']" ><h5>Inzeráty</h5></a>
       </li>
-      <li class="nav-item" routerLinkActive="active" >
+      <li *appHasRole="['Member']" class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/registracia']" ><h5>Registrácia</h5></a>
       </li>
-      <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active" >
+      <li *appHasRole="['Admin']" class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/admin']" ><h5>Admin</h5></a>
       </li>
       <li *ngIf="loggedIn()" class="nav-item">

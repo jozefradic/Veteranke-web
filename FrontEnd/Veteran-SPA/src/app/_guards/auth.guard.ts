@@ -16,16 +16,16 @@ export class AuthGuard implements CanActivate {
       const match = this.authService.roleMatch(roles);
       if (match) {
         return true;
+      } else if (match == null) {
+        return true;
       } else {
         this.router.navigate(['/home']);
         this.aleritfy.error('You are not authorized to acceess this area');
-        return false;
       }
     }
     if (this.authService.loggedIn()) {
       return true;
     }
-
     this.aleritfy.error('You shall not pass!!');
     this.router.navigate(['/home']);
     return false;

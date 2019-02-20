@@ -18,30 +18,28 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'members', component: MembersComponent, resolve: {users: MemberResolver}},
+    {path: 'members/:id', component: MemberDetailComponent,
+        resolve: {user: MemberDetailResolver}},
+    {path: 'registracia', component: RegisterComponent},
+    {path: 'advertisements/new', component: AdvertisementNewComponent},
+    {path: 'advertisements', component: AdvertisementsComponent,
+        resolve: {advertisement: AdvertisementResolver }},
+    {path: 'advertisements/:id', component: AdvertisementDetailComponent,
+        resolve: {advertisement: AdvertisementDetailResolver}},
 
     {
         path: '',
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            {path: 'members', component: MembersComponent, resolve: {users: MemberResolver}},
-            {path: 'members/:id', component: MemberDetailComponent,
-                resolve: {user: MemberDetailResolver}},
             {path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]},
-            {path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']}}
-
-
+            {path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']}},
             // {path: 'members', component: MembersComponent}
         ]
     },
-    {path: 'registracia', component: RegisterComponent},
-    {path: 'advertisements', component: AdvertisementsComponent,
-        resolve: {advertisement: AdvertisementResolver }},
-    {path: 'advertisements/new', component: AdvertisementNewComponent},
-    { path: 'advertisements/:id', component: AdvertisementDetailComponent,
-        resolve: {advertisement: AdvertisementDetailResolver}},
     // wild card, if path is ok, but doesnt match anything above, redirect to HOME
     // ordering is important
-    {path: '**', redirectTo: '', pathMatch: 'full'},
+   // {path: '**', redirectTo: '', pathMatch: 'full'},
 ];

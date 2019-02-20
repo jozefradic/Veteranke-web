@@ -6,4 +6,8 @@ export interface Advertisement {
     name: string;
     createdDate: Date;
     photos?: Photo[];
+
+    type: string;
+    describe: string;
+    price: number;
 }

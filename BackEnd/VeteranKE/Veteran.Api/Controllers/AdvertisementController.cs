@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Veteran.Repository.DTOs;
@@ -24,6 +25,7 @@ namespace Veteran.Api.Controllers
             _mapper = mapper;
         }
         // GET: api/Advertisement
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -32,6 +34,7 @@ namespace Veteran.Api.Controllers
         }
 
         // GET: api/Advertisement/5
+        [AllowAnonymous]
         [HttpGet("{id}", Name = "Get")]
         public async Task<IActionResult> GetOne(int id)
         {

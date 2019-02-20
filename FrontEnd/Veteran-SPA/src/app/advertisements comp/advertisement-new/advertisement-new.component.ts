@@ -4,6 +4,7 @@ import { AdvertisementService } from 'src/app/_services/advertisement.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { Router } from '@angular/router';
 import { Advertisement } from 'src/app/_models/advertisement';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-advertisement-new',
@@ -12,26 +13,46 @@ import { Advertisement } from 'src/app/_models/advertisement';
 })
 export class AdvertisementNewComponent implements OnInit {
 
-  // advertisement: Advertisement;
-  userId = this.authService.decodedToken.nameid;
-  newAdvertisement: any = { UserId: this.userId };
+  advertisement: Advertisement;
+  // userId = this.authService.decodedToken.nameid;
+  // newAdvertisement: any = { UserId: this.userId };
+
+  advForm: FormGroup;
 
   constructor(private authService: AuthService, private advService: AdvertisementService,
-    private alertify: AlertifyService,  private router: Router) { }
+    private alertify: AlertifyService,  private router: Router,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.userId);
+    this.createAdvForm();
   }
 
-  create() {
-    console.log(this.newAdvertisement);
-    this.advService.createNew(this.newAdvertisement).subscribe((advertisement: Advertisement) => {
-      this.alertify.success('Advertisement created successful');
-      console.log(advertisement);
-      this.router.navigate(['/advertisements/', advertisement.id]);
-    }, error => {
-      this.alertify.error(error);
+  createAdvForm() {
+    this.advForm = this.fb.group({
+      name: ['', Validators.required],
+      desc: ['', Validators.required],
+      price: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]*')])],
+      userId: this.authService.decodedToken.nameid
     });
+  }
+  create() {
+    console.log(this.advForm.value);
+    if (this.advForm.valid) {
+      this.advertisement = Object.assign({}, this.advForm.value);
+      this.advService.createNew(this.advertisement).subscribe((advertisement: Advertisement) => {
+        this.alertify.success('Inzerát bol úspešne vytvorený');
+        this.router.navigate(['/advertisements/', advertisement.id]);
+      }, error => {
+        this.alertify.error(error);
+      });
+    }
+    // this.advService.createNew(this.advForm).subscribe((advertisement: Advertisement) => {
+    //   this.alertify.success('Advertisement created successful');
+    //   console.log(advertisement);
+    //   this.router.navigate(['/advertisements/', advertisement.id]);
+    // }, error => {
+    //   this.alertify.error(error);
+    // });
   }
 
 }
