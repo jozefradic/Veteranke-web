@@ -1,11 +1,13 @@
 <div class="jumbotron">
-    <button class="btn btn-primary" 
-      [routerLink]="['/advertisements/new']" >
-      <i class="fa fa-plus"></i></button>
+     
+    <button class="btn btn-primary"
+        [routerLink]="['/advertisement/new']" >
+        <i class="fa fa-plus"></i>
+    </button>
   
     <!-- <div class="container mt-3">
       < class="row"> -->
-      <div *ngFor="let adv of advertisements">
+      <div *ngFor="let adv of advertisement">
         <div class="row w-100">
           <div class="col-md-12">
               <app-advertisement-card [advertisement]="adv"></app-advertisement-card>

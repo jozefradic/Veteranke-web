@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Advertisement } from 'src/app/_models/advertisement';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdvertisementService } from 'src/app/_services/advertisement.service';
 import { User } from 'src/app/_models/user';
 
@@ -10,23 +10,27 @@ import { User } from 'src/app/_models/user';
   styleUrls: ['./advertisements.component.css']
 })
 export class AdvertisementsComponent implements OnInit {
-advertisements: Advertisement[];
+advertisement: Advertisement[];
 user: User;
 
-  constructor(private route: ActivatedRoute, private advService: AdvertisementService) { }
+  constructor(private route: ActivatedRoute, private advService: AdvertisementService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      this.advertisements = data['advertisement'];
+      this.advertisement = data['advertisementArr'];
     });
+  }
+  newAdv() {
+    this.router.navigateByUrl('/advertisements/new');
   }
 
-  getAds() {
-    this.advService.getAdvertisements().subscribe((advertisements: Advertisement[]) => {
-      this.advertisements = advertisements;
-    }, error => {
-      console.log(error);
-    });
-  }
+  // getAds() {
+  //   this.advService.getAdvertisements().subscribe((advertisements: Advertisement[]) => {
+  //     this.advertisement = advertisements;
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 
 }

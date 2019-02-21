@@ -2,7 +2,7 @@
     <div class="container mt-4">
         <div class="row">
           <div class="col-sm-4 kartis">
-            <img class="card-img-top img-thumbnail img-fluid" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.userName}}">
+            <!-- <img class="card-img-top img-thumbnail img-fluid" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.userName}}"> -->
             <div class="card-body">
               <div>
                 <strong>Created:</strong>
@@ -21,7 +21,9 @@
                     <p>{{user.country}}</p>
                 </tab>
                 <tab heading="Photos of {{user.userName}}" index="0">
-                  <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                  <img src="{{user.photos[0]}}" alt="">
+                  <!-- <input type="file" (change)="uploadPhoto()">#fileInput -->
+                  <!-- <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery> -->
                 </tab>
               </tabset>
             </div>

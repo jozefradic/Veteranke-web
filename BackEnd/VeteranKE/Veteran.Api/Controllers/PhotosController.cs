@@ -15,6 +15,7 @@ using Veteran.Repository.DTOs;
 using Veteran.Repository.Interfaces;
 using Veteran.Repository.Models.UserModels;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Veteran.Api.Controllers
 {
@@ -25,12 +26,16 @@ namespace Veteran.Api.Controllers
         private readonly IVeteranCrud _repo;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
+        private readonly IHostingEnvironment _host;
         private Cloudinary _cloudinary;
-        public PhotosController(IVeteranCrud repo, IMapper mapper, IOptions<CloudinarySettings> cloudinaryConfig)
+
+        public PhotosController(IVeteranCrud repo, IMapper mapper, IOptions<CloudinarySettings> cloudinaryConfig,
+            IHostingEnvironment host)
         {
             _repo = repo;
             _mapper = mapper;
             _cloudinaryConfig = cloudinaryConfig;
+            _host = host;
 
             Account acc = new Account(
             _cloudinaryConfig.Value.CloudName,
@@ -60,6 +65,13 @@ namespace Veteran.Api.Controllers
             var userFromRepo = await _repo.GetUser(userId);
 
             var file = photoForCreationDto.File;
+
+            var uploadPhotoPath = Path.Combine(_host.WebRootPath,"uploads\\");
+
+            if (!Directory.Exists(uploadPhotoPath))
+                Directory.CreateDirectory(uploadPhotoPath);
+
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
             // instance of image, cloudinary classses
             var uploadResult = new ImageUploadResult();
             //chceck file lenght
@@ -68,11 +80,12 @@ namespace Veteran.Api.Controllers
                 using (var stream = file.OpenReadStream())
                 {
                     string path = Path.GetTempPath() + file.FileName;
+                    string path1 = uploadPhotoPath + fileName;
                     //Path.GetTem
-                    using (FileStream fs = new FileStream(path, FileMode.CreateNew, FileAccess.ReadWrite))
+                    using (FileStream fs = new FileStream(path1, FileMode.CreateNew, FileAccess.ReadWrite))
                     {
                         //fs.CopyTo(stream);
-                        stream.CopyTo(fs);
+                        await stream.CopyToAsync(fs);
                     }
 
 
@@ -89,7 +102,12 @@ namespace Veteran.Api.Controllers
             //photoForCreationDto.Url = uploadResult.Uri.ToString();
             //photoForCreationDto.PublicId = uploadResult.PublicId;
 
-            var photo = _mapper.Map<Photo>(photoForCreationDto);
+            var photo = new Photo
+            {
+                Description = fileName,
+                Url = uploadPhotoPath+fileName,
+            };
+            _mapper.Map<Photo>(photoForCreationDto);
 
             // add the photo
             userFromRepo.Photos.Add(photo);

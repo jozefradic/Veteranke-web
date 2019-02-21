@@ -1,18 +1,22 @@
 <div class="jumbotron">
   <div class="container mt-4">
       <div class="col-sm-8">
-          <form [formGroup]="advForm" (ngSubmit)="create()" class="form-horizontal"> 
-              <h2 class="text-center text-info">Inzerát</h2>
+          <div *ngIf="editForm.dirty" class="alert alert-info">
+              <p><strong>Information:</strong> Urobili ste zmeny. Všetky neuložené zmeny budú stratené
+            </div>
+          <form [formGroup]="editForm" (ngSubmit)="create()" class="form-horizontal"> 
+              <h2 class="text-center text-info">Úprava inzerátu</h2>
               <hr>
               <div class="form-group row">
                 <label for="name" class="col-sm-2 col-form-label">Názov</label>
                 <div class="col-sm-8">
-                    <input type="text" 
-                    [(ngModel)]="advertisement.name"
-                    [ngClass]="{'is-invalid': advForm.get('name').errors 
-                    && advForm.get('name').touched}"  
+                    <input type="text"
+                    formControlName="name" 
+                    [(ngModel)]="advertisement.name" 
+                    [ngClass]="{'is-invalid': editForm.get('name').errors 
+                    && editForm.get('name').touched}"  
                     class="form-control is-invalid" 
-                    formControlName="name"   
+                    
                     placeholder="Názov"                               
                     >
                     <div class="invalid-feedback"> Prosím zadajte názov</div>
@@ -23,8 +27,8 @@
                 <label for="desc" class="col-sm-2 col-form-label">Popis</label>
                 <div class="col-sm-8">
                     <textarea type="text"
-                    [ngClass]="{'is-invalid': advForm.get('desc').errors 
-                    && advForm.get('desc').touched}"
+                    [ngClass]="{'is-invalid': editForm.get('desc').errors 
+                    && editForm.get('desc').touched}"
                     class="form-control is-invalid" formControlName="desc" 
                     placeholder="Sem zadajte popis"></textarea>
                     <div class="invalid-feedback"> Prosím zadajte popis produktu</div>
@@ -36,33 +40,33 @@
                   <label for="price" class="col-sm-2 col-form-label">Cena</label>
                   <div class="col-sm-8">
                     <input type="text" 
-                    [ngClass]="{'is-invalid': advForm.get('price').touched &&
-                            advForm.get('price').errors}"
+                    [ngClass]="{'is-invalid': editForm.get('price').touched &&
+                    editForm.get('price').errors}"
                     class="form-control" formControlName="price" 
                     >
-                    <div class="invalid-feedback" *ngIf="advForm.get('price').touched && advForm.get('price').errors" >
-                      <div *ngIf="!!advForm.get('price').errors.required"> Prosím zadajte sumu</div>
-                      <div *ngIf="!!advForm.get('price').errors.pattern"> Suma musí obsahovať len číslice</div>
+                    <div class="invalid-feedback" *ngIf="editForm.get('price').touched && editForm.get('price').errors" >
+                      <div *ngIf="!!editForm.get('price').errors.required"> Prosím zadajte sumu</div>
+                      <div *ngIf="!!editForm.get('price').errors.pattern"> Suma musí obsahovať len číslice</div>
     
                   </div>
                   </div>            
               </div>
             
               <div class="form-group row">
-                <button [disabled]="!advForm.valid" class="btn btn-success" type="submit">Create</button>
+                <button [disabled]="!editForm.valid" class="btn btn-success" type="submit">Create</button>
               </div>
             </form>
-            <p>Form value: {{advForm.value | json}}</p>
-            <p>Form status: {{advForm.status | json}}</p>
-                <form #editForm="ngForm" id="editForm" >
-                  <!-- <h4>City</h4>
+            <p>Form value: {{editForm.value | json}}</p>
+            <p>Form status: {{editForm.status | json}}</p>
+                <!-- <form #editForm="ngForm" id="editForm" >
+                  <h4>City</h4>
                   <textarea name="city" rows="6" class="form-control"
                   [(ngModel)]="user?.city"></textarea>
                   <h4>Country</h4>
                   <textarea name="country" rows="6" class="form-control"
-                  [(ngModel)]="user.country"></textarea> -->
+                  [(ngModel)]="user.country"></textarea>
                   
-                </form>
+                </form> -->
               
         </div>
   </div>

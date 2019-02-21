@@ -24,4 +24,10 @@ updateUser(id: number, user: User) {
   return this.http.put(this.baseUrl + 'users/' + id, user);
 }
 
+uploadPhotoUser(id: number, file: File) {
+  const formData = new FormData();
+  formData.append('file', file);
+  return this.http.post(this.baseUrl + 'users/' + id + '/photos', formData);
+}
+
 }

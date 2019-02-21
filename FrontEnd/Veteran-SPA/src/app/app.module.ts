@@ -46,6 +46,7 @@ import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
 import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
 
 import { HasRoleDirective } from './_directive/hasRole.directive';
+import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -62,6 +63,7 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
+      PhotoEditorComponent,
       AdvertisementsComponent,
       AdvertisementCardComponent,
       AdvertisementDetailComponent,

@@ -17,6 +17,7 @@ import { AdvertisementNewComponent } from './advertisements comp/advertisement-n
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AdvertisementEditComponent } from './advertisements comp/advertisement-edit/advertisement-edit.component';
 import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
+import { ValueComponent } from './value/value.component';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
@@ -24,11 +25,13 @@ export const appRoute: Routes = [
     {path: 'members/:id', component: MemberDetailComponent,
         resolve: {user: MemberDetailResolver}},
     {path: 'registracia', component: RegisterComponent},
-    {path: 'advertisements/new', component: AdvertisementNewComponent},
     {path: 'advertisements', component: AdvertisementsComponent,
-        resolve: {advertisement: AdvertisementResolver }},
+        resolve: {advertisementArr: AdvertisementResolver }},
     {path: 'advertisements/:id', component: AdvertisementDetailComponent,
         resolve: {advertisement: AdvertisementDetailResolver}},
+    {path: 'advertisement/new', component: AdvertisementNewComponent},
+    {path: 'values', component: ValueComponent},
+
 
     {
         path: '',
@@ -38,7 +41,7 @@ export const appRoute: Routes = [
             {path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'advertisements/:id/edit', component: AdvertisementEditComponent,
-                resolve: {advertisement: AdvertisementEditResolver}, canDeactivate: [PreventUnsavedChanges]},
+                    resolve: {advertisement: AdvertisementEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'admin', component: AdminPanelComponent, data: {roles: ['Admin', 'Moderator']}},
             // {path: 'members', component: MembersComponent}
         ]

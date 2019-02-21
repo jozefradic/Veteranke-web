@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { AuthService } from 'src/app/_services/auth.service';
@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AdvertisementEditComponent implements OnInit {
 advertisement: Advertisement;
-advForm: FormGroup;
+editForm: FormGroup;
   constructor(private route: ActivatedRoute, private alertify: AlertifyService,
     private advService: AdvertisementService, private authService: AuthService,
     private fb: FormBuilder) { }
@@ -27,7 +27,7 @@ advForm: FormGroup;
   }
 
   createAdvForm() {
-    this.advForm = this.fb.group({
+    this.editForm = this.fb.group({
       name: ['', Validators.required],
       desc: ['', Validators.required],
       price: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]*')])],
@@ -36,7 +36,7 @@ advForm: FormGroup;
   }
 
   create() {
-    console.log(this.advForm.value);
+    console.log(this.editForm.value);
 
   }
 

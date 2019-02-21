@@ -11,13 +11,10 @@ export class ValueComponent implements OnInit {
   // declare property
 values: any;
 
-user = this.authService.decodedToken.nameid;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   ngOnInit() {
-    this.getAdvertisements();
-    console.log(this.user);
   }
 // method
   // getValues() {
@@ -28,15 +25,6 @@ user = this.authService.decodedToken.nameid;
   //   });
   // }
 
-getAdvertisements() {
-  this.http.get('http://localhost:5000/api/Advertisement').subscribe(res => {
-    this.values = res;
-    // console.log(this.values);
-    // console.log(this.values.name);
 
-  }, error => {
-    console.log(error);
-  });
-}
 
 }
