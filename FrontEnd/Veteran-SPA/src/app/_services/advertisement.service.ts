@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Advertisement } from '../_models/advertisement';
+import { PaginationResult } from '../_models/pagination';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +14,25 @@ baseUrl = environment.apiUrl;
 
 constructor(private http: HttpClient) { }
 
-getAdvertisements(): Observable<Advertisement[]> {
-  return this.http.get<Advertisement[]>(this.baseUrl + 'advertisement');
+getAdvertisements(page?, itemsPerPage?): Observable<PaginationResult<Advertisement[]>> {
+  const paginatedResult: PaginationResult<Advertisement[]> = new PaginationResult<Advertisement[]> ();
+
+  let params = new HttpParams();
+
+  if (page != null && itemsPerPage != null) {
+    params = params.append('pageNumber', page);
+    params = params.append('pageSize', itemsPerPage);
+  }
+  return this.http.get<Advertisement[]>(this.baseUrl + 'advertisement', { observe: 'response', params})
+  .pipe(
+    map(response => {
+      paginatedResult.result = response.body;
+      if (response.headers.get('Pagination') != null) {
+        paginatedResult.pagination = JSON.parse(response.headers.get('Pagination'));
+      }
+      return paginatedResult;
+    })
+  );
 }
 
 getAdvertisement(id): Observable<Advertisement> {

@@ -7,6 +7,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Veteran.Api.Helpers;
 using Veteran.Repository.DTOs;
 using Veteran.Repository.Interfaces;
 using Veteran.Repository.Models;
@@ -28,9 +29,13 @@ namespace Veteran.Api.Controllers
         // GET: api/Advertisement
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery]AdvParams advParams)
         {
-            var advertisements = await _advertisement.GetAdvertisements();
+            var advertisements = await _advertisement.GetAdvertisements(advParams);
+
+            Response.AddPagination(advertisements.CurrentPage, advertisements.PageSize,
+                advertisements.TotalCount, advertisements.TotalPages);
+
             return Ok(advertisements);
         }
 

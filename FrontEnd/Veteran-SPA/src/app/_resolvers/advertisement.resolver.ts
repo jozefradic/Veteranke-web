@@ -8,11 +8,14 @@ import { AdvertisementService } from '../_services/advertisement.service';
 
 @Injectable()
 export class AdvertisementResolver implements Resolve<Advertisement[]> {
+    pageNumber = 1;
+    pageSize = 2;
+
     constructor(private advService: AdvertisementService, private router: Router,
         private alertify: AlertifyService) {}
 
     resolve(route: ActivatedRouteSnapshot): Observable<Advertisement[]> {
-        return this.advService.getAdvertisements().pipe(
+        return this.advService.getAdvertisements(this.pageNumber, this.pageSize).pipe(
             catchError(error => {
                 this.alertify.error('Problem retrieving data');
                 this.router.navigate(['/home']);

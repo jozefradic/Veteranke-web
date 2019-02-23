@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Veteran.Api.Helpers;
 using Veteran.Repository.DTOs;
 using Veteran.Repository.Models;
 
@@ -14,7 +15,7 @@ namespace Veteran.Repository.Interfaces
         Task<bool> SaveAll();
 
         Task<Advertisement> CreateNew(Advertisement advertisement);
-        Task<IEnumerable<Advertisement>> GetAdvertisements();
+        Task<PagedList<Advertisement>> GetAdvertisements(AdvParams advParams);
         Task<Advertisement> GetAdvertisement(int id);
 
 

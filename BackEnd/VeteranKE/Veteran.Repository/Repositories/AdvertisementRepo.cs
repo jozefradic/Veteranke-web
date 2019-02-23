@@ -8,6 +8,7 @@ using Veteran.Repository.DTOs;
 using Veteran.Repository.Interfaces;
 using Veteran.Repository.Models;
 using System.Linq;
+using Veteran.Api.Helpers;
 
 namespace Veteran.Repository.Repositories
 {
@@ -65,20 +66,12 @@ namespace Veteran.Repository.Repositories
             return advertisement;
         }
 
-        public async Task<IEnumerable<Advertisement>> GetAdvertisements()
+        public async Task<PagedList<Advertisement>> GetAdvertisements(AdvParams advParams)
         {
-            var advertisements = await _context.Advertisements
-                .Include(u => u.User)
-                .ToListAsync();
+            var advertisements = _context.Advertisements
+                .Include(u => u.User);            
 
-            //var advertisement = await (from adv in _context.Advertisements
-            //                           join usr in _context.Users on adv.UserId equals usr.Id
-            //                           select new
-            //                           {
-            //                               adv
-            //                           }).ToListAsync();
-
-            return advertisements;
+            return await PagedList<Advertisement>.CreateAsync(advertisements, advParams.PageNumber, advParams.PageSize);
         }
 
         public async Task<bool> SaveAll()

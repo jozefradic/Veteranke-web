@@ -1,22 +1,69 @@
 <div class="jumbotron">
-     
-    <button class="btn btn-primary"
-        [routerLink]="['/advertisement/new']" >
-        <i class="fa fa-plus"></i>
-    </button>
+  <div class="container mt-5">
+
+    <!-- header -->
+
+<div class="row">
+    <div class="text-center">
+      <h2>Your matches - {{pagination.totalItems}} found</h2>
+    </div>
+  </div>
   
-    <!-- <div class="container mt-3">
-      < class="row"> -->
-      <div *ngFor="let adv of advertisement">
-        <div class="row w-100">
-          <div class="col-md-12">
-              <app-advertisement-card [advertisement]="adv"></app-advertisement-card>
-          </div>
+    <!-- HTML for filters -->
+  
+    <div class="row">
+      <form class="form-inline" novalidate>
+  
+        <div class="form-group">
+          <label for="gender">Show: </label>
+          <select class="form-control" style="width: 130px" id="gender" name="gender">
+            <option>
+  
+            </option>
+          </select>
         </div>
-      </div>    
-                
-      <!-- </div>
-    </div> -->
+        <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+        <button type="button" class="btn btn-info" style="margin-left:10px">Reset Filter</button>
+      </form>
+    </div>
+    <br>
+  
+  
+    <!-- HTML for ordering -->
+  
+    <div class="pull-right">
+        <label style="margin-right: 10px">Order By: </label>
+        <div class="btn-group">
+          <button type="button" name="orderBy" class="btn btn-primary" btnRadio="lastActive">Last Active</button>
+          <button type="button" name="orderBy" class="btn btn-primary" btnRadio="created">Newest Members</button>
+        </div>
+      </div>
+
+    <button class="btn btn-primary"
+    [routerLink]="['/advertisement/new']" >
+    <i class="fa fa-plus"></i>
+    </button>
+
+
+  <div *ngFor="let adv of advertisement">
+    <div class="row w-100">
+      <div class="col-md-12">
+          <app-advertisement-card [advertisement]="adv"></app-advertisement-card>
+      </div>
+    </div>
+  </div>    
+  </div> 
+  
+  <div class="d-flex justify-content-center">
+      <pagination [boundaryLinks]="true" 
+      [totalItems]="pagination.totalItems"
+      [itemsPerPage]="pagination.itemsPerPage"
+      [(ngModel)]="pagination.currentPage"
+      (pageChanged)="pageChanged($event)"
+      previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+
+</pagination>
+  </div>
 </div>
 
 
