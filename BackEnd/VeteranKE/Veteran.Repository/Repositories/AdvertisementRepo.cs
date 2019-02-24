@@ -69,7 +69,13 @@ namespace Veteran.Repository.Repositories
         public async Task<PagedList<Advertisement>> GetAdvertisements(AdvParams advParams)
         {
             var advertisements = _context.Advertisements
-                .Include(u => u.User);            
+                .Include(u => u.User)
+                .Include(c => c.Category).AsQueryable();
+
+            if(!(string.IsNullOrEmpty(advParams.CategoryId.ToString())))
+            {
+                advertisements = advertisements.Where(adv => adv.CategoryId == advParams.CategoryId);
+            }
 
             return await PagedList<Advertisement>.CreateAsync(advertisements, advParams.PageNumber, advParams.PageSize);
         }
@@ -77,6 +83,13 @@ namespace Veteran.Repository.Repositories
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<IEnumerable<Category>> GetCategories()
+        {
+            var categories = await _context.Categories.ToListAsync();
+
+            return categories;
         }
     }
 }

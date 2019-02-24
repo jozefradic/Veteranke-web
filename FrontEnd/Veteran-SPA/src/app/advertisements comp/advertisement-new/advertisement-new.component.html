@@ -3,6 +3,23 @@
       <form [formGroup]="advForm" (ngSubmit)="create()" class="form-horizontal"> 
           <h2 class="text-center text-info">Inzerát</h2>
           <hr>
+
+          <div class="form-group row">
+            <label for="categoryId" class="col-sm-2 col-form-label">Kategória</label>
+            <div class="col-sm-8">
+              <select class="form-control" formControlName="categoryId"
+              [ngClass]="{'is-invalid': advForm.get('categoryId').errors 
+              && advForm.get('categoryId').touched}">
+                <option value="">Vyberte kategóriu</option>
+                <option *ngFor="let item of category" [value]="item.id">{{item.name}}</option>
+
+              </select>
+              <div class="invalid-feedback" 
+              *ngIf="advForm.get('categoryId').touched 
+              && advForm.get('categoryId').hasError('required')">Vyberte kategóriu</div>
+
+          </div>
+          </div>
           
           <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Názov</label>

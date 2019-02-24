@@ -18,5 +18,6 @@ namespace Veteran.Api.Helpers
             set { pageSize = (value > MaxPageSize) ? MaxPageSize: value; }
         }
 
+        public int? CategoryId { get; set; }
     }
 }

@@ -44,6 +44,7 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { AdvertisementDetailResolver } from './_resolvers/advertisement-detail.resolver';
 import { AdvertisementResolver } from './_resolvers/advertisement.resolver';
 import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
+import { AdvertisementNewResolver } from './_resolvers/advertisement-new.resolver';
 
 import { HasRoleDirective } from './_directive/hasRole.directive';
 import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
@@ -107,7 +108,8 @@ export function tokenGetter() {
       AdvertisementService,
       AdvertisementDetailResolver,
       AdvertisementResolver,
-      AdvertisementEditResolver
+      AdvertisementEditResolver,
+      AdvertisementNewResolver
    ],
    bootstrap: [
       AppComponent

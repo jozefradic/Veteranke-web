@@ -80,5 +80,16 @@ namespace Veteran.Api.Controllers
         public void Delete(int id)
         {
         }
+
+        // GET api/values
+        [AllowAnonymous]
+        [HttpGet("categories")]
+        public async Task<IActionResult> GetAdvertisementCategories()
+        {
+            var categories = await _advertisement.GetCategories();
+            
+
+            return Ok(categories);
+        }
     }
 }

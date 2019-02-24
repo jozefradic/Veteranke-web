@@ -49,6 +49,12 @@ namespace Veteran.Repository.Data
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasForeignKey(fk => fk.AdvertisementId);
 
+            //modelBuilder.Entity<Category>()
+            //    .HasMany(a => a.Advertisements)
+            //    .WithOne(a => a.Category)
+            //    .OnDelete(DeleteBehavior.Cascade)
+            //    .HasForeignKey(fk => fk.CategoryId);
+
             modelBuilder.Entity<Album>()
                 .HasMany(p => p.Photos)
                 .WithOne(a => a.Album)
@@ -81,5 +87,7 @@ namespace Veteran.Repository.Data
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Article> Articles { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }

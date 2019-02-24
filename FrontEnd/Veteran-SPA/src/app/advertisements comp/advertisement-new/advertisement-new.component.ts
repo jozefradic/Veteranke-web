@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
 import { AdvertisementService } from 'src/app/_services/advertisement.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Advertisement } from 'src/app/_models/advertisement';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Category } from 'src/app/_models/category';
 
 @Component({
   selector: 'app-advertisement-new',
@@ -13,6 +14,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AdvertisementNewComponent implements OnInit {
 
+  category: Category;
   advertisement: Advertisement;
   // userId = this.authService.decodedToken.nameid;
   // newAdvertisement: any = { UserId: this.userId };
@@ -20,10 +22,14 @@ export class AdvertisementNewComponent implements OnInit {
   advForm: FormGroup;
 
   constructor(private authService: AuthService, private advService: AdvertisementService,
-    private alertify: AlertifyService,  private router: Router,
+    private alertify: AlertifyService,  private router: Router, private route: ActivatedRoute,
     private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => {
+      this.category = data['cat'];
+    });
+    console.log(this.category);
     this.createAdvForm();
   }
 
@@ -32,7 +38,8 @@ export class AdvertisementNewComponent implements OnInit {
       name: ['', Validators.required],
       desc: ['', Validators.required],
       price: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]*')])],
-      userId: this.authService.decodedToken.nameid
+      userId: this.authService.decodedToken.nameid,
+      categoryId: ['', Validators.required]
     });
   }
   create() {

@@ -89,6 +89,8 @@ namespace Veteran.Api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CategoryId");
+
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Desc");
@@ -100,6 +102,8 @@ namespace Veteran.Api.Migrations
                     b.Property<int?>("UserId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -136,6 +140,18 @@ namespace Veteran.Api.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Articles");
+                });
+
+            modelBuilder.Entity("Veteran.Repository.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Veteran.Repository.Models.UserModels.Photo", b =>
@@ -314,6 +330,11 @@ namespace Veteran.Api.Migrations
 
             modelBuilder.Entity("Veteran.Repository.Models.Advertisement", b =>
                 {
+                    b.HasOne("Veteran.Repository.Models.Category", "Category")
+                        .WithMany("Advertisements")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Veteran.Repository.Models.UserModels.User", "User")
                         .WithMany("Advertisements")
                         .HasForeignKey("UserId")

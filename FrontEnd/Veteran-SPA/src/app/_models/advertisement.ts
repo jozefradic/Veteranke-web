@@ -1,5 +1,6 @@
 import { Photo } from './photo';
 import { User } from './user';
+import { Category } from './category';
 
 export interface Advertisement {
     id: number;
@@ -13,4 +14,5 @@ export interface Advertisement {
     price: number;
 
     user: User;
+    category: Category;
 }

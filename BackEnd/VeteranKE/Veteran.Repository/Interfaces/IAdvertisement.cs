@@ -18,7 +18,7 @@ namespace Veteran.Repository.Interfaces
         Task<PagedList<Advertisement>> GetAdvertisements(AdvParams advParams);
         Task<Advertisement> GetAdvertisement(int id);
 
-
+        Task<IEnumerable<Category>> GetCategories();
 
 
     }

@@ -18,6 +18,7 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AdvertisementEditComponent } from './advertisements comp/advertisement-edit/advertisement-edit.component';
 import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
 import { ValueComponent } from './value/value.component';
+import { AdvertisementNewResolver } from './_resolvers/advertisement-new.resolver';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
@@ -29,7 +30,6 @@ export const appRoute: Routes = [
         resolve: {advertisementArr: AdvertisementResolver }},
     {path: 'advertisements/:id', component: AdvertisementDetailComponent,
         resolve: {advertisement: AdvertisementDetailResolver}},
-    {path: 'advertisement/new', component: AdvertisementNewComponent},
     {path: 'values', component: ValueComponent},
 
 
@@ -38,6 +38,8 @@ export const appRoute: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
+            {path: 'advertisement/new', component: AdvertisementNewComponent,
+                resolve: {cat: AdvertisementNewResolver}},
             {path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChanges]},
             {path: 'advertisements/:id/edit', component: AdvertisementEditComponent,

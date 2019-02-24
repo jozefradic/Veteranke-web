@@ -3,7 +3,7 @@
 
     <!-- header -->
 
-<div class="row">
+  <div class="row">
     <div class="text-center">
       <h2>Your matches - {{pagination.totalItems}} found</h2>
     </div>
@@ -12,39 +12,39 @@
     <!-- HTML for filters -->
   
     <div class="row">
-      <form class="form-inline" novalidate>
+      <form class="form-inline" #form="ngForm" (ngSubmit)="getAds()" novalidate>
   
         <div class="form-group">
-          <label for="gender">Show: </label>
-          <select class="form-control" style="width: 130px" id="gender" name="gender">
-            <option>
-  
-            </option>
+          <label for="category">Kategórie: </label>
+          <select class="form-control" style="width: 130px" [(ngModel)]="advParams.CategoryId"
+          id="category" name="category">
+            <option *ngFor="let item of category" [value]="item.id">{{item.name}}</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
-        <button type="button" class="btn btn-info" style="margin-left:10px">Reset Filter</button>
+        <button type="submit" class="btn btn-primary" style="margin-left:10px">Filter</button>
+        <button type="button" (click)="resetFilter()" class="btn btn-info" style="margin-left:10px">Reset Filter</button>
       </form>
+      <button class="btn btn-primary" style="margin-left:10px"
+    [routerLink]="['/advertisement/new']" >
+    <i class="fa fa-plus">Nový inzerát</i>
+    </button>
     </div>
     <br>
   
   
     <!-- HTML for ordering -->
   
-    <div class="pull-right">
+    <!-- <div class="pull-right">
         <label style="margin-right: 10px">Order By: </label>
         <div class="btn-group">
           <button type="button" name="orderBy" class="btn btn-primary" btnRadio="lastActive">Last Active</button>
           <button type="button" name="orderBy" class="btn btn-primary" btnRadio="created">Newest Members</button>
         </div>
-      </div>
+    </div> -->
 
-    <button class="btn btn-primary"
-    [routerLink]="['/advertisement/new']" >
-    <i class="fa fa-plus"></i>
-    </button>
+    
 
-
+<div class="mt-1">
   <div *ngFor="let adv of advertisement">
     <div class="row w-100">
       <div class="col-md-12">
@@ -62,8 +62,10 @@
       (pageChanged)="pageChanged($event)"
       previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
 
-</pagination>
+      </pagination>
   </div>
+</div>
+  
 </div>
 
 
