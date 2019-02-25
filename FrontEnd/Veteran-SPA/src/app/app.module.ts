@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule, TabsModule, CollapseModule, PaginationModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, CollapseModule, PaginationModule, ModalModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
@@ -17,6 +17,10 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { UserManagmentComponent } from './admin/user-managment/user-managment.component';
+import { AdminService } from './_services/admin.service';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+
 
 import { MembersComponent } from './members comp/members/members.component';
 import { MemberCardComponent } from './members comp/member-card/member-card.component';
@@ -49,6 +53,7 @@ import { AdvertisementNewResolver } from './_resolvers/advertisement-new.resolve
 import { HasRoleDirective } from './_directive/hasRole.directive';
 import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
 
+
 export function tokenGetter() {
    return localStorage.getItem('token');
 }
@@ -71,13 +76,16 @@ export function tokenGetter() {
       AdvertisementNewComponent,
       AdvertisementEditComponent,
       AdminPanelComponent,
-      HasRoleDirective
+      HasRoleDirective,
+      UserManagmentComponent,
+      RolesModalComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       ReactiveFormsModule,
+      ModalModule.forRoot(),
       NgbModule.forRoot(),
       NgxGalleryModule,
       PaginationModule.forRoot(),
@@ -109,7 +117,11 @@ export function tokenGetter() {
       AdvertisementDetailResolver,
       AdvertisementResolver,
       AdvertisementEditResolver,
-      AdvertisementNewResolver
+      AdvertisementNewResolver,
+      AdminService
+   ],
+   entryComponents: [
+      RolesModalComponent
    ],
    bootstrap: [
       AppComponent

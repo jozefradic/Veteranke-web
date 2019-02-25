@@ -62,9 +62,9 @@ export class NavComponent implements OnInit {
     this.authService.decodedToken = null;
     this.authService.currentUser = null;
     this.alertify.message('Logged out');
-    this.router.navigate(['/home']);
     window.location.reload();
 
+    this.router.navigate(['/home']);
   }
 
   cancelLogin() {

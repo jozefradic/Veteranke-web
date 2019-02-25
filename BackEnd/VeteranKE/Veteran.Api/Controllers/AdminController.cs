@@ -34,7 +34,8 @@ namespace Veteran.Api.Controllers
                                   select new
                                   {
                                       Id = user.Id,
-                                      UserName = user.UserName,
+                                      FirstName = user.FirstName,
+                                      LastName = user.LastName,
                                       Roles = (from userRole in user.UserRoles
                                                join role in _context.Roles
                                                on userRole.RoleId
@@ -46,10 +47,10 @@ namespace Veteran.Api.Controllers
         }
 
         [Authorize(Policy = "RequireAdminRole")]
-        [HttpPost("editRoles/{userName}")]
-        public async Task<IActionResult> EditRoles(string userName, RoleEditDto roleEditDto)
+        [HttpPost("editRoles/{id}")]
+        public async Task<IActionResult> EditRoles(int id, RoleEditDto roleEditDto)
         {
-            var user = await _userManager.FindByNameAsync(userName);
+            var user = await _userManager.FindByIdAsync(id.ToString());
 
             var userRoles = await _userManager.GetRolesAsync(user);
 
@@ -65,7 +66,7 @@ namespace Veteran.Api.Controllers
             result = await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles));
 
             if (!result.Succeeded)
-                return BadRequest("Failed to reove roles");
+                return BadRequest("Failed to remove roles");
 
             return Ok(await _userManager.GetRolesAsync(user));
         }
