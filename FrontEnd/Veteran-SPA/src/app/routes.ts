@@ -19,6 +19,9 @@ import { AdvertisementEditComponent } from './advertisements comp/advertisement-
 import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resolver';
 import { ValueComponent } from './value/value.component';
 import { AdvertisementNewResolver } from './_resolvers/advertisement-new.resolver';
+import { HistoriaComponent } from './galeria/historia/historia.component';
+import { RenovaciaComponent } from './galeria/renovacia/renovacia.component';
+import { VozidlaComponent } from './galeria/vozidla/vozidla.component';
 
 export const appRoute: Routes = [
     {path: '', component: HomeComponent},
@@ -31,7 +34,9 @@ export const appRoute: Routes = [
     {path: 'advertisements/:id', component: AdvertisementDetailComponent,
         resolve: {advertisement: AdvertisementDetailResolver}},
     {path: 'values', component: ValueComponent},
-
+    {path: 'galeria/historia', component: HistoriaComponent},
+    {path: 'galeria/renovacia', component: RenovaciaComponent},
+    {path: 'galeria/vozidla', component: VozidlaComponent},
 
     {
         path: '',

@@ -52,6 +52,9 @@ import { AdvertisementNewResolver } from './_resolvers/advertisement-new.resolve
 
 import { HasRoleDirective } from './_directive/hasRole.directive';
 import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
+import { HistoriaComponent } from './galeria/historia/historia.component';
+import { RenovaciaComponent } from './galeria/renovacia/renovacia.component';
+import { VozidlaComponent } from './galeria/vozidla/vozidla.component';
 
 
 export function tokenGetter() {
@@ -78,7 +81,10 @@ export function tokenGetter() {
       AdminPanelComponent,
       HasRoleDirective,
       UserManagmentComponent,
-      RolesModalComponent
+      RolesModalComponent,
+      RenovaciaComponent,
+      VozidlaComponent,
+      HistoriaComponent
    ],
    imports: [
       BrowserModule,

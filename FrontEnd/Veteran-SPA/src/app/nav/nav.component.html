@@ -1,26 +1,35 @@
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top" id="navBar">
 
-    
+
     <button class="navbar-toggler colapse" type="button" (click) = "toggleNavbar =!toggleNavbar"
-    data-toggle="collapse" data-target="#navbarToggler" 
-    aria-controls="navbarToggler" aria-expanded="false" 
+    data-toggle="collapse" data-target="#navbarToggler"
+    aria-controls="navbarToggler" aria-expanded="false"
     aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
   <div class="collapse navbar-collapse" id="navbarToggler" [ngbCollapse]="toggleNavbar">
-    
+
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active"> 
+      <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/']"> <h5>Domov</h5>  </a>
       </li>
       <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/members']" ><h5>Členovia</h5></a>
       </li>
-      <li class="nav-item" routerLinkActive="active" > 
+      <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/advertisements']" ><h5>Inzeráty</h5></a>
       </li>
-      <li *appHasRole="['Member']" class="nav-item" routerLinkActive="active" >
+      <li class="nav-item" routerLinkActive="active" *bsDropdownMenu >
+        <a class="nav-link" ><h5>Galeria</h5></a>
+        <a class="dropdown-item" [routerLink]="['galeria/vozidla']">
+        <i class="fa fa-user"></i> <h6>Galeria nasich vozidiel</h6></a>
+        <a class="dropdown-item" [routerLink]="['galeria/renovacia']">
+        <i class="fa fa-user"></i> <h6>Ako sme renovovali</h6></a>
+        <a class="dropdown-item" [routerLink]="['galeria/historia']">
+        <i class="fa fa-user"></i> <h6>Historia automobilizmu</h6></a>
+      </li>
+      <li *appHasRole="['Member']" class="nav-item" class="dropdown" dropdown >
         <a class="nav-link" [routerLink]="['/registracia']" ><h5>Registrácia</h5></a>
       </li>
       <li *appHasRole="['Admin']" class="nav-item" routerLinkActive="active">
@@ -33,16 +42,16 @@
 
     <div *ngIf="!logBtn && !loggedIn()">
       <button class="btn btn-success my-2 my-sm-0 mr-2" type="submit" (click)="logInForm()">Log</button>
-      <a [routerLink]="['/register']"> 
+      <a [routerLink]="['/register']">
         <button class="btn btn-success my-2 my-sm-0" type="submit" >Register</button>
-      </a>    
+      </a>
     </div>
 
     <div *ngIf="loggedIn()" class="dropdown" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
         <h5>Welcome {{authService.decodedToken?.unique_name | titlecase}}</h5>
       </a>
-    
+
       <div class="dropdown-menu" *bsDropdownMenu>
         <a class="dropdown-item" [routerLink]="['/member/edit']">
           <i class="fa fa-user"></i> <h6>Edit profile</h6></a>
@@ -52,9 +61,9 @@
     </div>
 
     <form *ngIf="!loggedIn() && logBtn" #loginForm="ngForm" id="loginForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
-      <input class="form-control mr-sm-2" type="text" placeholder="Username" 
+      <input class="form-control mr-sm-2" type="text" placeholder="Username"
       required [(ngModel)]="loginCredential.username" name="username">
-      <input class="form-control mr-sm-2" type="password" placeholder="Password" 
+      <input class="form-control mr-sm-2" type="password" placeholder="Password"
       required [(ngModel)]="loginCredential.password" name="password">
       <button [disabled]="!loginForm.valid" form="loginForm" class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
       <button class="btn btn-default" type="submit" (click)="cancelLogin()">Cancel</button>
