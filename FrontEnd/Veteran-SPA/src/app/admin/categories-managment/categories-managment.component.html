@@ -1,0 +1,39 @@
+<div class="row">
+  <table class="table">
+    <tr>
+      
+      <th style="width: 40%">Kategória </th>
+      <th style="width: 20%">Operácie </th>
+    </tr>
+    <tr *ngFor="let item of categories"> 
+      <td *ngIf="!toggleBtn && rowId != item.id">{{item.name}}</td>
+
+      <td *ngIf="toggleBtn && rowId == item.id ">
+          <form [formGroup]="editForm" id="edit" (ngSubmit)="save()" class="form-horizontal"> 
+              <div class="form-group row">
+                <div class="col-sm-8">
+                    <input type="text"
+                    formControlName="name" 
+                    [(ngModel)]="item.name"                      
+                    class="form-control"                     
+                    >
+                </div>            
+              </div>
+            </form> 
+      </td>
+
+      <td *ngIf="toggleBtn  && rowId == item.id ">
+          <button class="btn btn-success" form="edit" 
+          [disabled]="!editForm.valid" 
+          class="btn btn-success" type="submit">Uložiť</button>
+          <button class="btn btn-danger" (click)="cancel()">Zrušiť</button>
+
+      </td>
+      
+      <td *ngIf="!toggleBtn  && rowId != item.id ">
+        <button class="btn btn-info" (click)="opsBtn(item.id)" >Uprava kategórie</button>
+      </td>
+    </tr>
+  </table>
+</div>
+

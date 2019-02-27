@@ -12,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
-  @ViewChild('') fileInput: ElementRef;
+@ViewChild('') fileInput: ElementRef;
 user: User;
 galleryOptions: NgxGalleryOptions[];
 galleryImages: NgxGalleryImage[];
@@ -24,32 +24,43 @@ galleryImages: NgxGalleryImage[];
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
-
-
     this.galleryOptions = [
       {
-        width: '500px',
-        height: '500px',
-        imagePercent: 100,
-        thumbnailsColumns: 4,
-        imageAnimation: NgxGalleryAnimation.Slide,
-        preview: true
-      }
+        // width: '500px',
+        // height: '500px',
+        // imagePercent: 100,
+        // thumbnailsColumns: 4,
+        // imageAnimation: NgxGalleryAnimation.Slide
+        previewCloseOnClick: true,
+        previewCloseOnEsc: true
+      },
+      {
+        breakpoint: 500,
+        width: '300px',
+        height: '300px',
+        thumbnailsColumns: 3
+      },
+      {
+        breakpoint: 300,
+        width: '100%',
+        height: '200px',
+        thumbnailsColumns: 2
+      },
     ];
     this.galleryImages = this.getImages();
+    console.log(this.galleryImages);
   }
 
   getImages() {
     const imageUrls = [];
     for (let i = 0; i < this.user.photos.length; i++) {
       imageUrls.push({
-        small: this.sanitizer.bypassSecurityTrustResourceUrl(this.user.photos[i].url),
-        medium: this.sanitizer.bypassSecurityTrustResourceUrl(this.user.photos[i].url),
-        large: this.sanitizer.bypassSecurityTrustResourceUrl(this.user.photos[i].url),
-        url: this.sanitizer.bypassSecurityTrustResourceUrl(this.user.photos[i].url),
+        small: (this.user.photos[i].url),
+        medium: (this.user.photos[i].url),
+        big: (this.user.photos[i].url),
+        url: (this.user.photos[i].url),
       });
     }
-    console.log(imageUrls[0]);
     return imageUrls;
   }
   // loadUser() {

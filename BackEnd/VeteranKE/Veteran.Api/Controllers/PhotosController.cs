@@ -67,9 +67,10 @@ namespace Veteran.Api.Controllers
             var file = photoForCreationDto.File;
 
             var uploadPhotoPath = Path.Combine(_host.WebRootPath,"uploads\\");
+            var uploadPhotoPath1 = "C:\\Users\\cptja\\Documents\\Projekt 4\\Veteranke-web\\FrontEnd\\Veteran-SPA\\src\\assets\\galery\\";
 
-            if (!Directory.Exists(uploadPhotoPath))
-                Directory.CreateDirectory(uploadPhotoPath);
+            if (!Directory.Exists(uploadPhotoPath1))
+                Directory.CreateDirectory(uploadPhotoPath1);
 
             var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
             // instance of image, cloudinary classses
@@ -80,7 +81,7 @@ namespace Veteran.Api.Controllers
                 using (var stream = file.OpenReadStream())
                 {
                     string path = Path.GetTempPath() + file.FileName;
-                    string path1 = uploadPhotoPath + fileName;
+                    string path1 = uploadPhotoPath1 + fileName;
                     //Path.GetTem
                     using (FileStream fs = new FileStream(path1, FileMode.CreateNew, FileAccess.ReadWrite))
                     {
@@ -105,7 +106,8 @@ namespace Veteran.Api.Controllers
             var photo = new Photo
             {
                 Description = fileName,
-                Url = uploadPhotoPath+fileName,
+                //Url = uploadPhotoPath1+fileName,
+                Url =  "../../../assets/galery/" +fileName
             };
             _mapper.Map<Photo>(photoForCreationDto);
 

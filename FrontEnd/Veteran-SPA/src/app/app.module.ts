@@ -8,6 +8,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { CarouselModule} from 'ngx-bootstrap/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 import { appRoute } from './routes';
 
@@ -20,6 +22,7 @@ import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { UserManagmentComponent } from './admin/user-managment/user-managment.component';
 import { AdminService } from './_services/admin.service';
 import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
+import { CategoriesManagmentComponent } from './admin/categories-managment/categories-managment.component';
 
 
 import { MembersComponent } from './members comp/members/members.component';
@@ -51,10 +54,11 @@ import { AdvertisementEditResolver } from './_resolvers/advertisement-edit.resol
 import { AdvertisementNewResolver } from './_resolvers/advertisement-new.resolver';
 
 import { HasRoleDirective } from './_directive/hasRole.directive';
-import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
 import { HistoriaComponent } from './galeria/historia/historia.component';
 import { RenovaciaComponent } from './galeria/renovacia/renovacia.component';
 import { VozidlaComponent } from './galeria/vozidla/vozidla.component';
+
+import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
 
 
 export function tokenGetter() {
@@ -72,7 +76,6 @@ export function tokenGetter() {
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent,
       AdvertisementsComponent,
       AdvertisementCardComponent,
       AdvertisementDetailComponent,
@@ -84,7 +87,9 @@ export function tokenGetter() {
       RolesModalComponent,
       RenovaciaComponent,
       VozidlaComponent,
-      HistoriaComponent
+      HistoriaComponent,
+      CategoriesManagmentComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -94,6 +99,7 @@ export function tokenGetter() {
       ModalModule.forRoot(),
       NgbModule.forRoot(),
       NgxGalleryModule,
+      FileUploadModule,
       PaginationModule.forRoot(),
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
@@ -108,6 +114,7 @@ export function tokenGetter() {
          }
       })
    ],
+
    providers: [
 
       AuthService,
