@@ -16,6 +16,7 @@ export class MemberDetailComponent implements OnInit {
 user: User;
 galleryOptions: NgxGalleryOptions[];
 galleryImages: NgxGalleryImage[];
+login = localStorage.getItem('token');
 
   constructor(private userService: UserService, private alertify: AlertifyService,
     private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
@@ -48,7 +49,6 @@ galleryImages: NgxGalleryImage[];
       },
     ];
     this.galleryImages = this.getImages();
-    console.log(this.galleryImages);
   }
 
   getImages() {
