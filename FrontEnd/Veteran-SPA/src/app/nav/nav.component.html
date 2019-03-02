@@ -20,16 +20,16 @@
       <li class="nav-item" routerLinkActive="active" >
         <a class="nav-link" [routerLink]="['/advertisements']" ><h5>Inzeráty</h5></a>
       </li>
-      <li class="nav-item" routerLinkActive="active" *bsDropdownMenu >
-        <a class="nav-link" ><h5>Galeria</h5></a>
-        <a class="dropdown-item" [routerLink]="['galeria/vozidla']">
-        <i class="fa fa-user"></i> <h6>Galeria nasich vozidiel</h6></a>
+      <li class="nav-item dropdown" routerLinkActive="active" dropdown >
+        <a class="nav-link" dropdownToggle><h5>Galeria</h5></a>
+        <div class="dropdown-menu" *bsDropdownMenu><a class="dropdown-item" [routerLink]="['galeria/vozidla']">
+        <i class="fa fa-user"></i> <h5>Galeria nasich vozidiel</h5></a>
         <a class="dropdown-item" [routerLink]="['galeria/renovacia']">
-        <i class="fa fa-user"></i> <h6>Ako sme renovovali</h6></a>
+        <i class="fa fa-user"></i> <h5>Ako sme renovovali</h5></a>
         <a class="dropdown-item" [routerLink]="['galeria/historia']">
-        <i class="fa fa-user"></i> <h6>Historia automobilizmu</h6></a>
+        <i class="fa fa-user"></i> <h5>Historia automobilizmu</h5></a></div>
       </li>
-      <li *appHasRole="['Member']" class="nav-item" class="dropdown" dropdown >
+      <li *appHasRole="['Member']" class="nav-item" >
         <a class="nav-link" [routerLink]="['/registracia']" ><h5>Registrácia</h5></a>
       </li>
       <li *appHasRole="['Admin']" class="nav-item" routerLinkActive="active">

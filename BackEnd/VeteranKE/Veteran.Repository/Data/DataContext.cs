@@ -65,7 +65,7 @@ namespace Veteran.Repository.Data
                 .HasMany(p => p.Photos)
                 .WithOne(a => a.Article)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasForeignKey(fk => fk.AlbumId);
+                .HasForeignKey(fk => fk.ArticleId);
 
             modelBuilder.Entity<User>()
                 .HasMany(adv => adv.Advertisements)

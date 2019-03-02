@@ -18,3 +18,23 @@ C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repos
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Core.xml
 C:\Users\cptja\Documents\Projekt 4\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csprojAssemblyReference.cache
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Veteran.Repository.deps.json
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Veteran.Repository.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Veteran.Repository.pdb
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Http.Features.xml
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.EntityFrameworkCore.xml
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Core.xml
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.AssemblyInfoInputs.cache
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.AssemblyInfo.cs
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csproj.CopyComplete
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.dll
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.pdb
+C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csprojAssemblyReference.cache

@@ -59,6 +59,7 @@ import { RenovaciaComponent } from './galeria/renovacia/renovacia.component';
 import { VozidlaComponent } from './galeria/vozidla/vozidla.component';
 
 import { PhotoEditorComponent } from './members comp/photo-editor/photo-editor.component';
+import { CardCompComponent } from './galeria/card-comp/card-comp.component';
 
 
 export function tokenGetter() {
@@ -67,6 +68,7 @@ export function tokenGetter() {
 
 @NgModule({
    declarations: [
+      CardCompComponent,
       AppComponent,
       ValueComponent,
       NavComponent,

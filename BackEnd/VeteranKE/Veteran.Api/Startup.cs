@@ -109,7 +109,7 @@ namespace Veteran.Api
             //services.AddScoped<IAuth, Auth>();
             services.AddScoped<IVeteranCrud, VeteranRepo>();
             services.AddScoped<IAdvertisement, AdvertisementRepo>();
-
+            services.AddScoped<IGalery, GaleryRepo>();
             // seed data
             services.AddTransient<Seed>();
             
