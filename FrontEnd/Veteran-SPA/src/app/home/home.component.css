@@ -1,3 +1,11 @@
 img {
     width: 100%;
 }
+.uvod{
+    position: centered;
+    text-decoration-line: underline;
+    text-emphasis-color: blue;
+    text-size-adjust:  50px;
+    text-align: center; 
+
+}
