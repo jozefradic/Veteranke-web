@@ -48,7 +48,15 @@ createNew(model: any) {
 }
 
 getCategories(): Observable<Category> {
-  return this.http.get<Category>(this.baseUrl + 'advertisement/categories');
+  return this.http.get<Category>(this.baseUrl + 'advertisement/category');
+}
+
+createNewCategory(model) {
+  return this.http.post<Category>(this.baseUrl + 'advertisement/category', model);
+}
+
+updateCategory(id: number, category: Category) {
+  return this.http.put(this.baseUrl + 'advertisement/category/' + id, category);
 }
 
 }

@@ -1532,23 +1532,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jojo\\.nuget\\packages\\": {},
+    "C:\\Users\\cptja\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jojo\\Desktop\\Veteranke-web\\BackEnd\\VeteranKE\\Veteran.Repository\\Veteran.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\cptja\\Documents\\Projekt 4\\Veteranke-web\\BackEnd\\VeteranKE\\Veteran.Repository\\Veteran.Repository.csproj",
       "projectName": "Veteran.Repository",
-      "projectPath": "C:\\Users\\Jojo\\Desktop\\Veteranke-web\\BackEnd\\VeteranKE\\Veteran.Repository\\Veteran.Repository.csproj",
-      "packagesPath": "C:\\Users\\Jojo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jojo\\Desktop\\Veteranke-web\\BackEnd\\VeteranKE\\Veteran.Repository\\obj\\",
+      "projectPath": "C:\\Users\\cptja\\Documents\\Projekt 4\\Veteranke-web\\BackEnd\\VeteranKE\\Veteran.Repository\\Veteran.Repository.csproj",
+      "packagesPath": "C:\\Users\\cptja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\cptja\\Documents\\Projekt 4\\Veteranke-web\\BackEnd\\VeteranKE\\Veteran.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Jojo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\cptja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

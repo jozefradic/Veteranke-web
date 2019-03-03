@@ -1,3 +1,24 @@
+<div *ngIf="!toggleBtnCategory" class="row">
+    <button class="btn btn-success" (click)="opsBtnCategory()" >Nová kategória</button>
+</div>
+<div *ngIf="toggleBtnCategory" class="row">
+    <form [formGroup]="newCategoryForm" id="newCategoryForm" 
+    (ngSubmit)="newCategory()" class="form-horizontal"> 
+        <div class="form-group row">
+          <div class="col-sm-8">
+              <input type="text"
+              formControlName="name"                      
+              class="form-control"                     
+              >
+          </div>            
+        </div>
+      </form>
+
+      <button class="btn btn-success" form="newCategoryForm" 
+          [disabled]="!newCategoryForm.valid" 
+          class="btn btn-success" type="submit">Uložiť</button>
+      <button class="btn btn-danger" (click)="cancelCat()">Zrušiť</button>
+</div>
 <div class="row">
   <table class="table">
     <tr>
@@ -6,7 +27,7 @@
       <th style="width: 20%">Operácie </th>
     </tr>
     <tr *ngFor="let item of categories"> 
-      <td *ngIf="!toggleBtn && rowId != item.id">{{item.name}}</td>
+      <td *ngIf="!toggleBtn || rowId != item.id">{{item.name}}</td>
 
       <td *ngIf="toggleBtn && rowId == item.id ">
           <form [formGroup]="editForm" id="edit" (ngSubmit)="save()" class="form-horizontal"> 
@@ -30,7 +51,7 @@
 
       </td>
       
-      <td *ngIf="!toggleBtn  && rowId != item.id ">
+      <td *ngIf="!toggleBtn  || rowId != item.id ">
         <button class="btn btn-info" (click)="opsBtn(item.id)" >Uprava kategórie</button>
       </td>
     </tr>

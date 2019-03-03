@@ -72,7 +72,7 @@ namespace Veteran.Repository.Repositories
                 .Include(u => u.User)
                 .Include(c => c.Category).AsQueryable();
 
-            if(!(string.IsNullOrEmpty(advParams.CategoryId.ToString())))
+            if (!(string.IsNullOrEmpty(advParams.CategoryId.ToString())))
             {
                 advertisements = advertisements.Where(adv => adv.CategoryId == advParams.CategoryId);
             }
@@ -91,5 +91,21 @@ namespace Veteran.Repository.Repositories
 
             return categories;
         }
+
+        public async Task<Category> CreateNewCategory(Category category)
+        {
+            await _context.Categories.AddAsync(category);
+            await _context.SaveChangesAsync();
+
+            return category;
+        }
+
+        public async Task<Category> GetCategory(int id)
+        {
+            var category = await _context.Categories.FirstOrDefaultAsync(cat => cat.Id == id);
+
+            return category;
+        }
+
     }
 }

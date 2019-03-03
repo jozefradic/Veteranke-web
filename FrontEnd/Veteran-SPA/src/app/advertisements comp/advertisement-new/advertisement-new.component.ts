@@ -20,6 +20,7 @@ export class AdvertisementNewComponent implements OnInit {
   // newAdvertisement: any = { UserId: this.userId };
 
   advForm: FormGroup;
+  types = ['Predaj', 'Kúpa', 'Darujem', 'Vymením'];
 
   constructor(private authService: AuthService, private advService: AdvertisementService,
     private alertify: AlertifyService,  private router: Router, private route: ActivatedRoute,

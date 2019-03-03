@@ -19,6 +19,8 @@ namespace Veteran.Repository.Interfaces
         Task<Advertisement> GetAdvertisement(int id);
 
         Task<IEnumerable<Category>> GetCategories();
+        Task<Category> CreateNewCategory(Category category);
+        Task<Category> GetCategory(int id);
 
 
     }

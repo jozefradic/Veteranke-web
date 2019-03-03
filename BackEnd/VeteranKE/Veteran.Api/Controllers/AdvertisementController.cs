@@ -83,13 +83,35 @@ namespace Veteran.Api.Controllers
 
         // GET api/values
         [AllowAnonymous]
-        [HttpGet("categories")]
+        [HttpGet("category")]
         public async Task<IActionResult> GetAdvertisementCategories()
         {
             var categories = await _advertisement.GetCategories();
-            
 
             return Ok(categories);
+        }
+
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPost("category")]
+        public async Task<IActionResult> CreateNewCategory([FromBody]Category category)
+        {
+            var createdCategory = await _advertisement.CreateNewCategory(category);
+
+            return Ok(createdCategory);
+        }
+
+        [Authorize(Policy = "RequireAdminRole")]
+        [Route("category/{id}")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategory(int id,  CategoryForUpdateDto categoryForUpdateDto)
+        {
+
+            var categoryFromRepo = await _advertisement.GetCategory(id);
+
+            _mapper.Map(categoryForUpdateDto, categoryFromRepo);
+            if (await _advertisement.SaveAll())
+                return NoContent();
+            throw new Exception($"Updating category {id} failed on save");
         }
     }
 }
