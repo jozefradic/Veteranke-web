@@ -1,10 +1,10 @@
-<div class="jumbotron">
+<div style="background-color: transparent !important;" class="jumbotron">
     <div class="container mt-4">
 
         <div class="row">
           <div class="col-sm-4">
               <h1>Your Profile</h1>
-      
+
           </div>
           <div class="col-sm-8">
             <div *ngIf="editForm.dirty" class="alert alert-info">
@@ -12,9 +12,9 @@
             </div>
           </div>
         </div>
-        
+
         <div class="row">
-      
+
           <div class="col-sm-4 kartis">
             <img class="card-img-top img-thumbnail" src="../../../assets/user.png" alt="{{user.userName}}">
             <div class="card-body">
@@ -27,7 +27,7 @@
               </div>
             </div>
           </div>
-      
+
           <div class="col-sm-8">
             <div class="tab-panel">
               <tabset>
@@ -39,17 +39,17 @@
                     <h4>Country</h4>
                     <textarea name="country" rows="6" class="form-control"
                     [(ngModel)]="user.country"></textarea>
-                    
+
                   </form>
                 </tab>
                 <tab heading="Edit photo">
                     <app-photo-editor [photos]="user.photos"></app-photo-editor>
                 </tab>
-                
+
               </tabset>
             </div>
           </div>
         </div>
       </div>
-      
+
 </div>

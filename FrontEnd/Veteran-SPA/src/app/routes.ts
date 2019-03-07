@@ -1,3 +1,4 @@
+import { VehiclegaleryResolver } from './_resolvers/vehiclegalery.resolver';
 import {Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -36,7 +37,7 @@ export const appRoute: Routes = [
     {path: 'values', component: ValueComponent},
     {path: 'galeria/historia', component: HistoriaComponent},
     {path: 'galeria/renovacia', component: RenovaciaComponent},
-    {path: 'galeria/vozidla', component: VozidlaComponent},
+    {path: 'galeria/vozidla', component: VozidlaComponent, resolve: {albums: VehiclegaleryResolver}},
 
     {
         path: '',

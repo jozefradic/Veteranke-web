@@ -38,3 +38,9 @@ C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Deb
 C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.dll
 C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.pdb
 C:\Users\Jojo\Desktop\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csprojAssemblyReference.cache
+D:\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csprojAssemblyReference.cache
+D:\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.csproj.CoreCompileInputs.cache
+D:\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.AssemblyInfoInputs.cache
+D:\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.AssemblyInfo.cs
+D:\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.dll
+D:\Veteranke-web\BackEnd\VeteranKE\Veteran.Repository\obj\Debug\netcoreapp2.1\Veteran.Repository.pdb

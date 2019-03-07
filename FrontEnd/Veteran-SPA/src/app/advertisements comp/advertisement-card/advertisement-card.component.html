@@ -1,18 +1,18 @@
 <div class="card w-100 mb-1 ">
   <div class="card-body w-100">
-  
-        <div class=" card-header bg-info ">
-          <h4 class="font-weight-bold text-capitalize">{{advertisement.name}} ({{advertisement.year}})</h4> 
-          <h6 >Typ: {{advertisement.type}}</h6>
-        </div>   
 
-  <table class="table "> 
+        <div class=" card-header bg-info ">
+          <h4 class="font-weight-bold text-capitalize">{{advertisement.name}} ({{advertisement.year}})</h4>
+          <h6 >Typ: {{advertisement.type}}</h6>
+        </div>
+
+  <table class="table ">
     <thead class="bg-light">
       <tr>
         <th>Kategória</th>
         <th>Dátum pridania</th>
         <th>Lokácia</th>
-        <th>Datail</th>
+        <th>Detail</th>
       </tr>
     </thead>
     <tbody>
@@ -21,10 +21,10 @@
         <td>{{advertisement.createdDate | date}}</td>
         <td>{{advertisement.user.city}}</td>
         <td><button class="btn btn-primary" [routerLink]="['/advertisements/', advertisement.id]">
-          <i class="fa fa-info-circle"></i>  
+          <i class="fa fa-info-circle"></i>
         </button>
       </td>
-        
+
       </tr>
     </tbody>
   </table>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Veteran.Repository.Interfaces;
@@ -20,6 +21,7 @@ namespace Veteran.Api.Controllers
             _repo = repo;
         }
         // GET: api/Galery
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetGalery()
         {

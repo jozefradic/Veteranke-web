@@ -17,6 +17,7 @@ bsModalRef: BsModalRef;
 
   ngOnInit() {
     this.getUserWithRoles();
+    console.log(this.users);
   }
 
   getUserWithRoles() {

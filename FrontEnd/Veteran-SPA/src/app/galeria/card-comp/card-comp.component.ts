@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Album } from 'src/app/_models/album';
+import { NgxGalleryImage, NgxGalleryOptions } from 'ngx-gallery';
 
 @Component({
   selector: 'app-card-comp',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-comp.component.css']
 })
 export class CardCompComponent implements OnInit {
+  @Input() album: Album;
 
   constructor() { }
 

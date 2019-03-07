@@ -1,3 +1,5 @@
+import { VehiclegaleryResolver } from './_resolvers/vehiclegalery.resolver';
+import { VehiclegaleryService } from './_services/vehiclegalery.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -120,6 +122,7 @@ export function tokenGetter() {
    providers: [
 
       AuthService,
+      VehiclegaleryService,
       ErrorInterceptorProvider,
       AlertifyService,
       AuthGuard,
@@ -133,6 +136,7 @@ export function tokenGetter() {
       AdvertisementResolver,
       AdvertisementEditResolver,
       AdvertisementNewResolver,
+      VehiclegaleryResolver,
       AdminService
    ],
    entryComponents: [

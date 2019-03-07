@@ -1,1 +1,3 @@
-<app-card-comp></app-card-comp>
+<div *ngFor="let album of albums" class="col-lg-2 col-md-3 col-sm-6">
+  <app-card-comp [album]="album"></app-card-comp>
+</div>
