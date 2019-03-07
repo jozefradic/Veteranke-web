@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Veteran.Api.Migrations
 {
-    public partial class updatedb : Migration
+    public partial class updateadvertisements : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -231,6 +231,8 @@ namespace Veteran.Api.Migrations
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     Desc = table.Column<string>(nullable: true),
                     Price = table.Column<int>(nullable: false),
+                    Type = table.Column<string>(nullable: true),
+                    Year = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: true),
                     CategoryId = table.Column<int>(nullable: true)
                 },

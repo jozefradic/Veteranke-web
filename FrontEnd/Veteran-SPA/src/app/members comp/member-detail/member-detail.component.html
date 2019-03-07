@@ -1,27 +1,24 @@
 <div class="jumbotron">
     <div class="container mt-4">
+        <h4>Profil {{user.userName}} </h4>
         <div class="row">
-          <div class="col-sm-4 kartis">
-            <!-- <img class="card-img-top img-thumbnail img-fluid" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.userName}}"> -->
+          <div class="col-sm-2 kartis">
+            <img class="card-img-top img-thumbnail img-fluid" src="../../../assets/user.png" alt="{{user.userName}}">
             <div class="card-body">
-              <div>
-                <strong>Created:</strong>
-                <p>{{user.created}}</p>
-              </div>
+            
             </div>
           </div>
       
-          <div class="col-sm-8">
+          <div class="col-sm-10">
             <div class="tab-panel">
               <tabset>
-                <tab heading="City {{user.userName}}" index="0">
-                  <p>{{user.city}}</p>
+                <tab heading="Informácie o {{user.userName | titlecase}}" index="0">
+                    <p>{{user.firstName | titlecase}} {{user.lastName | titlecase}}</p>
+                    <p>{{user.country | titlecase}} {{user.city | titlecase}}</p>
+                    <p>{{user.email}}</p>
+                    <p>{{user.phone}}</p>
                 </tab>
-                <tab heading="Country {{user.userName}}" index="0" *ngIf="login != null">
-                    <p>{{user.country}}</p>
-                    <app-photo-editor [photos]="user.photos"></app-photo-editor>
-                </tab>
-                <tab heading="Photos of {{user.userName}}" index="0">
+                <tab heading="Fotky používateľa {{user.userName}}" index="0">
                   <!-- <img src="../../../assets/galery/7ae9dabb-3ff4-4fb7-b1bc-361c56f82a44.jpg" alt=""> -->
                   <!-- <input type="file" (change)="uploadPhoto()">#fileInput -->
                   <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>

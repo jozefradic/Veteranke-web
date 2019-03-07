@@ -12,6 +12,7 @@ export interface Advertisement {
     type: string;
     describe: string;
     price: number;
+    year: string;
 
     user: User;
     category: Category;

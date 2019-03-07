@@ -44,6 +44,7 @@ namespace Veteran.Repository.Repositories
         {
             var advertisement = await _context.Advertisements
                 .Include(u => u.User)
+                .Include(c=>c.Category)
                 .FirstOrDefaultAsync(adv => adv.Id == id);
 
             //(from user in _context.Users

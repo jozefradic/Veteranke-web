@@ -20,7 +20,9 @@ export class AdvertisementNewComponent implements OnInit {
   // newAdvertisement: any = { UserId: this.userId };
 
   advForm: FormGroup;
-  types = ['Predaj', 'Kúpa', 'Darujem', 'Vymením'];
+  types = ['Predám', 'Kúpim', 'Darujem', 'Vymením'];
+  years = ['do 1929', '1930-1939', '1940-1949', '1950-1959', '1960-1969',
+  '1937-1979', '1980-1989', '1990-1999', 'nad 2000'];
 
   constructor(private authService: AuthService, private advService: AdvertisementService,
     private alertify: AlertifyService,  private router: Router, private route: ActivatedRoute,
@@ -40,7 +42,9 @@ export class AdvertisementNewComponent implements OnInit {
       desc: ['', Validators.required],
       price: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9]*')])],
       userId: this.authService.decodedToken.nameid,
-      categoryId: ['', Validators.required]
+      categoryId: ['', Validators.required],
+      type: ['', Validators.required],
+      year: ['', Validators.required]
     });
   }
   create() {

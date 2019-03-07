@@ -29,7 +29,7 @@
         <a class="dropdown-item" [routerLink]="['galeria/historia']">
         <i class="fa fa-user"></i> <h5>Historia automobilizmu</h5></a></div>
       </li>
-      <li *appHasRole="['Member']" class="nav-item" >
+      <li *appHasRole="['Admin', 'Member']" class="nav-item" >
         <a class="nav-link" [routerLink]="['/registracia']" ><h5>Registrácia</h5></a>
       </li>
       <li *appHasRole="['Admin']" class="nav-item" routerLinkActive="active">

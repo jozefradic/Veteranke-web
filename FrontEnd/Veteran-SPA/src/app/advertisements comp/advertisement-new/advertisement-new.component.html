@@ -18,7 +18,36 @@
               *ngIf="advForm.get('categoryId').touched 
               && advForm.get('categoryId').hasError('required')">Vyberte kategóriu</div>
 
+            </div>
           </div>
+
+          <div class="form-group row">
+            <label for="type" class="col-sm-2 col-form-label">Typ</label>
+            <div class="col-sm-8">
+              <select class="form-control" formControlName="type"
+              [ngClass]="{'is-invalid': advForm.get('type').errors && advForm.get('type').touched}">
+                <option value="">Vyberte typ</option>
+                <option *ngFor="let item of types" [value]="item">{{item}}</option>
+
+              </select>
+            <div class="invalid-feedback" *ngIf="advForm.get('type').touched 
+            && advForm.get('type').hasError('required')">Vyberte typ</div>
+            </div>            
+          </div>
+
+          <div class="form-group row">
+              <label for="year" class="col-sm-2 col-form-label">Rok</label>
+              <div class="col-sm-8">
+                <select class="form-control" formControlName="year"
+                [ngClass]="{'is-invalid': advForm.get('year').errors && advForm.get('year').touched}">
+                  <option value="">Vyberte rok</option>
+                  <option *ngFor="let item of years" [value]="item">{{item}}</option>
+  
+                </select>
+              <div class="invalid-feedback" *ngIf="advForm.get('year').touched 
+              && advForm.get('year').hasError('required')">Vyberte rok</div>
+              </div>
+              
           </div>
           
           <div class="form-group row">

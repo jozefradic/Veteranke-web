@@ -99,7 +99,11 @@ namespace Veteran.Api.Migrations
 
                     b.Property<int>("Price");
 
+                    b.Property<string>("Type");
+
                     b.Property<int?>("UserId");
+
+                    b.Property<string>("Year");
 
                     b.HasKey("Id");
 

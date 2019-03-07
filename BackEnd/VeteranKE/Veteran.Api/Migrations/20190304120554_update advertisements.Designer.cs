@@ -9,8 +9,8 @@ using Veteran.Repository.Data;
 namespace Veteran.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190302160600_update db")]
-    partial class updatedb
+    [Migration("20190304120554_update advertisements")]
+    partial class updateadvertisements
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -101,7 +101,11 @@ namespace Veteran.Api.Migrations
 
                     b.Property<int>("Price");
 
+                    b.Property<string>("Type");
+
                     b.Property<int?>("UserId");
+
+                    b.Property<string>("Year");
 
                     b.HasKey("Id");
 

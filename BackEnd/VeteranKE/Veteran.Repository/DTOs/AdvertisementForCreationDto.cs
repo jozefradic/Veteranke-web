@@ -14,6 +14,9 @@ namespace Veteran.Repository.DTOs
         public string Desc { get; set; }
         public int Price { get; set; }
 
+        public string Type { get; set; }
+        public string Year { get; set; }
+
         public int? UserId { get; set; }
         public int? CategoryId { get; set; }
 

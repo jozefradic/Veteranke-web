@@ -1,64 +1,53 @@
-<div class="jumbotron">
-  <div class="container-mt-4">
+<div style="background-color: transparent !important;" class="jumbotron">
+  <div class="container-mt-5">
     <div class="row">
-      <div class="col-sm-6 center">
+      <div class="col-sm-8 center">
         <!-- stlpec s inzeratom -->
         <div class="card">
-          <div class="card-body">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <th>Typ</th>
-                  <td>nnnnn</td>
-                </tr>
-                <tr>
-                  <th>Typ</th>
-                  <td>nnnnn</td>
-                </tr>
-                <tr>
-                  <th>Typ</th>
-                  <td>nnnnn</td>
-                </tr>
-                <tr>
-                  <th>Typ</th>
-                  <td>nnnnn</td>
-                </tr>
-                <tr>
-                  <th>Typ</th>
-                  <td>nnnnn</td>
-                </tr>
-                <tr>
-                  <th>Typ</th>
-                  <td>nnnnn</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="card-header">
+            <h4 class="font-weight-bold text-capitalize">{{advertisement.name}}</h4> 
           </div>
           <div class="card-body">
-              <p>Nazov</p>
-              <p>Nazov</p>
-    
-              <p>Nazov</p>
-    
-              <p>Nazov</p>
-              <p>Nazov</p>
-              <p>Nazov</p>
-          </div>
+            <div class="table-responsive">
+              <div class="table ">
+                <tbody>
+                  <h3>Základné údaje v kategorii {{advertisement.category.name}}</h3>
+                  <tr>
+                    <th>Typ</th>
+                    <td>{{advertisement.type}}</td>
+                  </tr>
+                  <tr>
+                    <th>Cena</th>
+                    <td>{{advertisement.price}}</td>
+                  </tr>
+                  <tr>
+                    <th>Popis</th>
+                    <td>{{advertisement.describe}}</td>
+                  </tr>
+                  <tr>
+                    <th>Rok</th>
+                    <td>{{advertisement.year}}</td>
+                  </tr>
+                  <h3>Kontaktné údaje {{advertisement.user.firstName}}</h3>
+                  <tr>
+                    <p>{{advertisement.user.firstName | titlecase}} {{advertisement.user.lastName | titlecase}}</p>
+                    <p>{{advertisement.user.country | titlecase}} {{advertisement.user.city | titlecase}}</p>
+                    <p>{{advertisement.user.email}}</p>
+                    <p>{{advertisement.user.phone}}</p>
 
+                  </tr>
+                </tbody>
+              </div>
+            </div>
+              
+          </div>
         </div>
       </div>
         <!-- stlpec s foto -->
-        <div class="col sm-6">
+        <div class="col sm-4">
           <div class="card">
               <div class="card-body">
-                  <p>Nazov</p>
-                  <p>Nazov</p>
-        
-                  <p>Nazov</p>
-        
-                  <p>Nazov</p>
-                  <p>Nazov</p>
-                  <p>Nazov</p>
+                  <p>FOTO</p>
               </div>       
     
           </div>

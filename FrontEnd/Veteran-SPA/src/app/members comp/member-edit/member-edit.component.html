@@ -16,10 +16,10 @@
         <div class="row">
       
           <div class="col-sm-4 kartis">
-            <img class="card-img-top img-thumbnail" src="{{user.photoUrl || '../../../assets/user.png'}}" alt="{{user.userName}}">
+            <img class="card-img-top img-thumbnail" src="../../../assets/user.png" alt="{{user.userName}}">
             <div class="card-body">
               <div>
-                <strong>Created:</strong>
+                <strong>Profil vytvorený:</strong>
                 <p>{{user.created}}</p>
               </div>
               <div class="card-footer">
@@ -43,6 +43,7 @@
                   </form>
                 </tab>
                 <tab heading="Edit photo">
+                    <app-photo-editor [photos]="user.photos"></app-photo-editor>
                 </tab>
                 
               </tabset>
